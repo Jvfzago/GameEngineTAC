@@ -1,5 +1,4 @@
-dep/Zombie.d bin/Zombie.o: src/Zombie.cpp include/Zombie.h \
- include/Component.h include/Sound.h \
+dep/TileSet.d bin/TileSet.o: src/TileSet.cpp include/TileSet.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/string \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/os_defines.h \
@@ -88,19 +87,17 @@ dep/Zombie.d bin/Zombie.o: src/Zombie.cpp include/Zombie.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/charconv.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/functional_hash.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/basic_string.tcc \
- C:/SDL2/include/SDL2/SDL_mixer.h C:/SDL2/include/SDL2/SDL_stdinc.h \
+ include/Sprite.h include/SDL_include.h C:/SDL2/include/SDL2/SDL.h \
+ C:/SDL2/include/SDL2/SDL_main.h C:/SDL2/include/SDL2/SDL_stdinc.h \
  C:/SDL2/include/SDL2/SDL_config.h C:/SDL2/include/SDL2/SDL_platform.h \
  C:/SDL2/include/SDL2/begin_code.h C:/SDL2/include/SDL2/close_code.h \
  C:/SDL2/include/SDL2/SDL_config_windows.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stdlib.h \
- C:/SDL2/include/SDL2/SDL_rwops.h C:/SDL2/include/SDL2/SDL_error.h \
- C:/SDL2/include/SDL2/SDL_audio.h C:/SDL2/include/SDL2/SDL_endian.h \
- C:/SDL2/include/SDL2/SDL_mutex.h C:/SDL2/include/SDL2/SDL_thread.h \
- C:/SDL2/include/SDL2/SDL_atomic.h C:/SDL2/include/SDL2/SDL_version.h \
- include/SpriteRenderer.h include/Sprite.h include/SDL_include.h \
- C:/SDL2/include/SDL2/SDL.h C:/SDL2/include/SDL2/SDL_main.h \
- C:/SDL2/include/SDL2/SDL_assert.h C:/SDL2/include/SDL2/SDL_clipboard.h \
- C:/SDL2/include/SDL2/SDL_cpuinfo.h \
+ C:/SDL2/include/SDL2/SDL_assert.h C:/SDL2/include/SDL2/SDL_atomic.h \
+ C:/SDL2/include/SDL2/SDL_audio.h C:/SDL2/include/SDL2/SDL_error.h \
+ C:/SDL2/include/SDL2/SDL_endian.h C:/SDL2/include/SDL2/SDL_mutex.h \
+ C:/SDL2/include/SDL2/SDL_thread.h C:/SDL2/include/SDL2/SDL_rwops.h \
+ C:/SDL2/include/SDL2/SDL_clipboard.h C:/SDL2/include/SDL2/SDL_cpuinfo.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/immintrin.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/mmintrin.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/xmmintrin.h \
@@ -184,45 +181,11 @@ dep/Zombie.d bin/Zombie.o: src/Zombie.cpp include/Zombie.h \
  C:/SDL2/include/SDL2/SDL_messagebox.h C:/SDL2/include/SDL2/SDL_metal.h \
  C:/SDL2/include/SDL2/SDL_power.h C:/SDL2/include/SDL2/SDL_render.h \
  C:/SDL2/include/SDL2/SDL_shape.h C:/SDL2/include/SDL2/SDL_system.h \
- C:/SDL2/include/SDL2/SDL_timer.h C:/SDL2/include/SDL2/SDL_locale.h \
- C:/SDL2/include/SDL2/SDL_misc.h C:/SDL2/include/SDL2/SDL_image.h \
- C:/SDL2/include/SDL2/SDL.h include/GameObject.h include/Rect.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/vector \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_uninitialized.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_vector.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_bvector.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/vector.tcc \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/memory \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_tempbuf.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_raw_storage_iter.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ranges_uninitialized.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ext/concurrence.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uses_allocator.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unique_ptr.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/utility \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_relops.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/tuple \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/array \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/invoke.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/shared_ptr.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/shared_ptr_base.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/allocated_ptr.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/refwrap.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ext/aligned_buffer.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/shared_ptr_atomic.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/atomic_base.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/atomic_lockfree_defines.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/backward/auto_ptr.h \
- include/Animator.h include/Animation.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h
-include/Zombie.h:
-include/Component.h:
-include/Sound.h:
+ C:/SDL2/include/SDL2/SDL_timer.h C:/SDL2/include/SDL2/SDL_version.h \
+ C:/SDL2/include/SDL2/SDL_locale.h C:/SDL2/include/SDL2/SDL_misc.h \
+ C:/SDL2/include/SDL2/SDL_image.h C:/SDL2/include/SDL2/SDL.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stdexcept
+include/TileSet.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/string:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/os_defines.h:
@@ -321,7 +284,10 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cerrno:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/charconv.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/functional_hash.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/basic_string.tcc:
-C:/SDL2/include/SDL2/SDL_mixer.h:
+include/Sprite.h:
+include/SDL_include.h:
+C:/SDL2/include/SDL2/SDL.h:
+C:/SDL2/include/SDL2/SDL_main.h:
 C:/SDL2/include/SDL2/SDL_stdinc.h:
 C:/SDL2/include/SDL2/SDL_config.h:
 C:/SDL2/include/SDL2/SDL_platform.h:
@@ -329,20 +295,14 @@ C:/SDL2/include/SDL2/begin_code.h:
 C:/SDL2/include/SDL2/close_code.h:
 C:/SDL2/include/SDL2/SDL_config_windows.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stdlib.h:
-C:/SDL2/include/SDL2/SDL_rwops.h:
-C:/SDL2/include/SDL2/SDL_error.h:
+C:/SDL2/include/SDL2/SDL_assert.h:
+C:/SDL2/include/SDL2/SDL_atomic.h:
 C:/SDL2/include/SDL2/SDL_audio.h:
+C:/SDL2/include/SDL2/SDL_error.h:
 C:/SDL2/include/SDL2/SDL_endian.h:
 C:/SDL2/include/SDL2/SDL_mutex.h:
 C:/SDL2/include/SDL2/SDL_thread.h:
-C:/SDL2/include/SDL2/SDL_atomic.h:
-C:/SDL2/include/SDL2/SDL_version.h:
-include/SpriteRenderer.h:
-include/Sprite.h:
-include/SDL_include.h:
-C:/SDL2/include/SDL2/SDL.h:
-C:/SDL2/include/SDL2/SDL_main.h:
-C:/SDL2/include/SDL2/SDL_assert.h:
+C:/SDL2/include/SDL2/SDL_rwops.h:
 C:/SDL2/include/SDL2/SDL_clipboard.h:
 C:/SDL2/include/SDL2/SDL_cpuinfo.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/immintrin.h:
@@ -443,43 +403,9 @@ C:/SDL2/include/SDL2/SDL_render.h:
 C:/SDL2/include/SDL2/SDL_shape.h:
 C:/SDL2/include/SDL2/SDL_system.h:
 C:/SDL2/include/SDL2/SDL_timer.h:
+C:/SDL2/include/SDL2/SDL_version.h:
 C:/SDL2/include/SDL2/SDL_locale.h:
 C:/SDL2/include/SDL2/SDL_misc.h:
 C:/SDL2/include/SDL2/SDL_image.h:
 C:/SDL2/include/SDL2/SDL.h:
-include/GameObject.h:
-include/Rect.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/vector:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_uninitialized.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_vector.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_bvector.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/vector.tcc:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/memory:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_tempbuf.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_raw_storage_iter.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ranges_uninitialized.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ext/concurrence.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uses_allocator.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unique_ptr.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/utility:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_relops.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/tuple:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/array:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/invoke.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/shared_ptr.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/shared_ptr_base.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/allocated_ptr.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/refwrap.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ext/aligned_buffer.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/shared_ptr_atomic.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/atomic_base.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/atomic_lockfree_defines.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/backward/auto_ptr.h:
-include/Animator.h:
-include/Animation.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stdexcept:

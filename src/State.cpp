@@ -1,16 +1,29 @@
 
 #include "state.h"
 #include "SpriteRenderer.h"
+#include "TileSet.h"
+#include "TileMap.h"
+
+
 
 State::State() : quitRequested(false){
     GameObject* bg = new GameObject();
     bg->AddComponent(std::unique_ptr<SpriteRenderer>(new SpriteRenderer(*bg, "Recursos/img/Background.png")));
     AddObject(bg);
 
+    GameObject* tileMap = new GameObject();
+    TileSet* tileSet = new TileSet(64, 64, "Recursos/img/Tileset.png");
+    tileMap->AddComponent(std::unique_ptr<TileMap>(new TileMap(*tileMap, "Recursos/tileMap.txt", tileSet)));
+    AddObject(tileMap);
+    tileMap->box.SetW(0);
+    tileMap->box.SetH(0);
+
+
     GameObject* zombie = new GameObject();
     zombie->box.SetX(600);
     zombie->box.SetY(450);
     music = Music("Recursos/audio/BGM.wav");
+    music.Play(-1);
 }
 
 State::~State(){
