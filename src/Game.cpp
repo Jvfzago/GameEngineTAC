@@ -69,7 +69,10 @@ SDL_Renderer* Game::GetRenderer(){
 }
 
 void Game::Run(){
+
+
     while(!state->QuitRequested()){
+        
         state->Update(0);
         SDL_RenderClear(renderer);
         state->Render();

@@ -214,7 +214,13 @@ dep/State.d bin/State.o: src/State.cpp include/state.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/atomic_lockfree_defines.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/backward/auto_ptr.h \
  include/SpriteRenderer.h include/TileSet.h include/TileMap.h \
- include/TileSet.h
+ include/TileSet.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits
 include/state.h:
 include/SDL_include.h:
 C:/SDL2/include/SDL2/SDL.h:
@@ -473,3 +479,9 @@ include/SpriteRenderer.h:
 include/TileSet.h:
 include/TileMap.h:
 include/TileSet.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:

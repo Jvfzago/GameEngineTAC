@@ -55,6 +55,10 @@
         "fstream": "cpp",
         "list": "cpp",
         "unordered_map": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "array": "cpp",
+        "cwctype": "cpp",
+        "ranges": "cpp",
+        "string_view": "cpp"
     }
 }

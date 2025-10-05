@@ -3,6 +3,8 @@
 #include "SpriteRenderer.h"
 #include "TileSet.h"
 #include "TileMap.h"
+#include <algorithm>
+
 
 
 
@@ -39,20 +41,30 @@ void State::LoadAssets(){
 }
 
 void State::Update(float dt){
-    for(auto& go: objectArray){
-        go->Update(dt);
-    }
-
     if(SDL_QuitRequested()){
         quitRequested = true;
     }
 
-    for(unsigned int i = 0; i < objectArray.size(); i++){
-        if(objectArray[i]->IsDead()){
-            objectArray.erase(objectArray.begin() + i);
-            i--;
-        }
+    for(auto& go: objectArray){
+        go->Update(dt);
     }
+
+    // for(unsigned int i = 0; i < objectArray.size(); i++){
+    //     if(objectArray[i]->IsDead()){
+    //         objectArray.erase(objectArray.begin() + i);
+    //         i--;
+    //     }
+    // }
+
+    objectArray.erase(
+        std::remove_if(objectArray.begin(), objectArray.end(),
+            [](std::unique_ptr<GameObject>& go_ptr) { 
+                
+                bool isDead = go_ptr->IsDead();
+                
+                return isDead; 
+            }),
+        objectArray.end());
 }
 
 void State::Render(){
