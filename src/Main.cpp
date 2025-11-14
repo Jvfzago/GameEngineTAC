@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
         std::cerr << "ERRO FATAL: " << e << std::endl;
         return 1;
     } catch (const std::exception& e) {
-        std::cerr << "ERRO PADRÂO: " << e.what() << std::endl;
+        std::cerr << "ERRO PADRAO: " << e.what() << std::endl;
         return 1;
     }
 

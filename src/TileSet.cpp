@@ -7,12 +7,12 @@ TileSet::TileSet(int tileWidth,
                  std::string file)
     : tileWidth(tileWidth),
       tileHeight(tileHeight) {
-    // Load the texture from file
+    
     tileSet.Open(file);
     if (!tileSet.IsOpen()) {
         throw std::runtime_error("Failed to load tileset texture from file: " + file);
     }
-    // Calculate titleCount based on texture size and tile dimensions
+    
     int textureWidth = tileSet.GetWidth();
     int textureHeight = tileSet.GetHeight();
 
@@ -23,7 +23,7 @@ TileSet::TileSet(int tileWidth,
 }
 
 void TileSet::RenderTile(unsigned index, float x, float y) {
-    if(index > (tileCount-1) || index > 0){
+    if(index > (tileCount-1) || index < 0){
       throw std::invalid_argument("Index is out of bounds of tileCount");
     }
 

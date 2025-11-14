@@ -15,7 +15,7 @@ State::State() : quitRequested(false){
 
     GameObject* tileMap = new GameObject();
     TileSet* tileSet = new TileSet(64, 64, "Recursos/img/Tileset.png");
-    tileMap->AddComponent(std::unique_ptr<TileMap>(new TileMap(*tileMap, "Recursos/tileMap.txt", tileSet)));
+    tileMap->AddComponent(std::unique_ptr<TileMap>(new TileMap(*tileMap, "Recursos/map/map.txt", tileSet)));
     AddObject(tileMap);
     tileMap->box.SetW(0);
     tileMap->box.SetH(0);
@@ -26,6 +26,7 @@ State::State() : quitRequested(false){
     zombie->box.SetY(450);
     music = Music("Recursos/audio/BGM.wav");
     music.Play(-1);
+    printf("State criado\n");
 }
 
 State::~State(){

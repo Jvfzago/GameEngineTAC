@@ -1,6 +1,7 @@
  
 #include "Game.h"
 #include "Resources.h"
+#include <stdexcept>
 
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
@@ -30,12 +31,23 @@ Game::Game(string title, int width, int height){
         throw string("Deu o seguinte erro ao inicializar o SDL_image: ") + SDL_GetError();
     }
 
+    int mixInitResult = Mix_Init(MIX_INIT_OGG); // Linha alterada
+
+    if (mixInitResult == 0) { // Checa a variável
+        throw string("Deu o seguinte erro...");
+    }
+
     if(Mix_Init(MIX_INIT_OGG) == 0){
         throw string("Deu o seguinte erro ao inicializar o SDL_mixer: ") + SDL_GetError();
     }
+    int openAudioResult = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
 
+    if (openAudioResult < 0) {
+        throw string("Deu o seguinte erro ao abrir o áudio: ") + SDL_GetError();
+    }
+    
     if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0){
-        throw string("Deu o seguinte erro ao fazer open audio: ") + SDL_GetError();
+        throw std::runtime_error("Erro ao abrir áudio: " + std::string(SDL_GetError()));
     }
     Mix_AllocateChannels(32);
 
@@ -49,6 +61,7 @@ Game::Game(string title, int width, int height){
         throw string("Deu o seguinte erro ao criar o renderizador: ") + SDL_GetError();
     }
 
+    state = new State();
 }
 
 Game::~Game(){
@@ -70,9 +83,14 @@ SDL_Renderer* Game::GetRenderer(){
 
 void Game::Run(){
 
+    if (state == nullptr) {
+        // Se o State não foi inicializado, jogue um erro claro para o debugger
+        throw std::runtime_error("Erro FATAL: O objeto State (state) é nulo!");
+    }
 
     while(!state->QuitRequested()){
-        
+
+
         state->Update(0);
         SDL_RenderClear(renderer);
         state->Render();

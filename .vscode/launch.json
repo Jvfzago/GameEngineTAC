@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C/C++: GDB Debug JOGO",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/JOGO.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/TDM-GCC-32/bin/gdb32.exe", // <-- CONFIRA ESTE CAMINHO!
+            "setupCommands": [
+                {
+                    "description": "Ativar auto-indentação para gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Definir dialeto de saída como GNU C++",
+                    "text": "-gdb-set target-abi default",
+                    "ignoreFailures": true
+                }
+            ],
+            // É crucial adicionar o caminho das DLLs da SDL2 para o GDB
+            // Se as DLLs não estiverem na pasta do JOGO.exe, adicione o caminho aqui:
+            // "MIMode": "gdb",
+            // "miDebuggerArgs": [
+            //     "-D", "C:/SDL2/bin" 
+            // ]
+        }
+    ]
+}
