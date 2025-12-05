@@ -1,3 +1,8 @@
+//Comandos: mingw32-make clean
+//Compliado para debug: mingw32-make debug
+//Compilacao normal: mingw32-make all
+//Rdoar: .\JOGO.exe
+
 #include "Game.h"
 #include <stdexcept>
 #include <iostream>

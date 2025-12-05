@@ -4,11 +4,15 @@
 #include "TileSet.h"
 #include "TileMap.h"
 #include <algorithm>
+#include <stdexcept>
 
 
 
 
 State::State() : quitRequested(false){
+    music = Music("Recursos/audio/BGM.wav");
+    music.Play(-1);
+    
     GameObject* bg = new GameObject();
     bg->AddComponent(std::unique_ptr<SpriteRenderer>(new SpriteRenderer(*bg, "Recursos/img/Background.png")));
     AddObject(bg);
@@ -24,8 +28,6 @@ State::State() : quitRequested(false){
     GameObject* zombie = new GameObject();
     zombie->box.SetX(600);
     zombie->box.SetY(450);
-    music = Music("Recursos/audio/BGM.wav");
-    music.Play(-1);
     printf("State criado\n");
 }
 

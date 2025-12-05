@@ -22,10 +22,10 @@ void Music::Play(int times) {
 
     if (music == nullptr) {
         // Use std::runtime_error para melhor compatibilidade com try-catch
-        throw std::runtime_error("Não há música para tocar: Ponteiro nulo.");
+        throw std::runtime_error("Não ha musica para tocar: Ponteiro nulo.");
     }
     if (Mix_PlayMusic(music, times) == -1) {
-        throw std::runtime_error("Erro ao tocar música: " + std::string(SDL_GetError()));
+        throw std::runtime_error("Erro ao tocar musica: " + std::string(SDL_GetError()));
     }
 }
 
