@@ -14,7 +14,7 @@ class TileMap : public Component {
 
         int mapWidth;
         int mapHeight;
-        int mapDepht;
+        int mapDepth;
     public:
         TileMap(GameObject& associated, std::string file, TileSet* tileSet);
 

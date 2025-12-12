@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-GameObject::GameObject() : isDead(false) {
+GameObject::GameObject() : isDead(false), components() {
 }
 
 GameObject::~GameObject() {

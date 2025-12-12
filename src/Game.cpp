@@ -1,11 +1,12 @@
- 
 #include "Game.h"
 #include "Resources.h"
 #include <stdexcept>
+#include <cstdio>
 
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
 #include "SDL_include.h"
+#include <iostream>
 
 Game* Game::instance = nullptr;
 
@@ -82,6 +83,7 @@ SDL_Renderer* Game::GetRenderer(){
 }
 
 void Game::Run(){
+    // int frameCount = 0;
 
     if (state == nullptr) {
         // Se o State não foi inicializado, jogue um erro claro para o debugger
@@ -92,6 +94,11 @@ void Game::Run(){
 
 
         state->Update(0);
+
+        // frameCount++;
+        // fprintf(stderr, "Frame: %d\n", frameCount);
+
+        
         SDL_RenderClear(renderer);
         state->Render();
         SDL_RenderPresent(renderer);

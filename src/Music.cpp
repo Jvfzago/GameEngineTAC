@@ -6,8 +6,7 @@ Music::Music() {
     music = nullptr;
 }
 
-Music::Music(string file) {
-    music = nullptr;
+Music::Music(string file): music(nullptr) {
     Open(file);
 }
 
@@ -39,7 +38,7 @@ void Music::Open(string file) {
     }
     music = Resources::GetMusic(file);
     if(music == nullptr){
-        throw string("Deu o seguinte erro ao carregar a musica: ") + SDL_GetError();
+        throw std::runtime_error(std::string("Deu o seguinte erro ao carregar a musica: ") + SDL_GetError());
     }
 }
 

@@ -1,13 +1,15 @@
+//Esteja na pasta GameEngineTAC
 //Comandos: mingw32-make clean
-//Compliado para debug: mingw32-make debug
-//Compilacao normal: mingw32-make all
-//Rdoar: .\JOGO.exe
+//Compilado para debug: mingw32-make debug
+//Compilação normal: mingw32-make all
+//Rodar: .\JOGO.exe
 
 #include "Game.h"
 #include <stdexcept>
 #include <iostream>
 
 int main(int argc, char* argv[]){
+
     try {
         Game& game = Game::GetInstance();
         game.Run();

@@ -1,17 +1,45 @@
 
-#include "state.h"
+#include "State.h"
 #include "SpriteRenderer.h"
 #include "TileSet.h"
 #include "TileMap.h"
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
+#include <filesystem>
+#include <fstream>    // C++11-friendly file existence check
+#include <direct.h>   // _getcwd on Windows
+#include <limits.h>   // _MAX_PATH
+#include <stdlib.h>
 
-
+#define PATH_BUFFER_SIZE 260
 
 
 State::State() : quitRequested(false){
-    music = Music("Recursos/audio/BGM.wav");
-    music.Play(-1);
+    
+    // CWD usando _getcwd (C++11 compatible)
+    char cwd[PATH_BUFFER_SIZE];
+    if (_getcwd(cwd, PATH_BUFFER_SIZE) != nullptr) {
+        std::cout << "[State] Current working directory: " << cwd << std::endl;
+    } else {
+        std::cout << "[State] Could not get current working directory" << std::endl;
+    }
+
+    // Verifica existência do arquivo com std::ifstream (compatível C++11)
+    std::ifstream f("Recursos\\audio\\BGM.wav");
+    if (!f.is_open()) {
+        std::cerr << "[State] Warning: Recursos\\audio\\BGM.wav not found relative to CWD." << std::endl;
+    } else {
+        std::cout << "[State] Found Recursos\\audio\\BGM.wav" << std::endl;
+    }
+
+    try {
+        music.Open("Recursos/audio/BGM.wav");
+        music.Play(-1);
+    } catch (const std::runtime_error& e) {
+        printf("Erro ao tocar musica de fundo: %s\n", e.what());
+    }
+    
     
     GameObject* bg = new GameObject();
     bg->AddComponent(std::unique_ptr<SpriteRenderer>(new SpriteRenderer(*bg, "Recursos/img/Background.png")));
@@ -52,6 +80,9 @@ void State::Update(float dt){
         go->Update(dt);
     }
 
+
+    
+    
     // for(unsigned int i = 0; i < objectArray.size(); i++){
     //     if(objectArray[i]->IsDead()){
     //         objectArray.erase(objectArray.begin() + i);

@@ -1,5 +1,7 @@
 #include "Resources.h"
 #include "Game.h"
+#include <stdexcept>
+#include <iostream>
 
 std::unordered_map<std::string, SDL_Texture*> Resources::imageTable;
 std::unordered_map<std::string, Mix_Music*> Resources::musicTable;
@@ -29,11 +31,16 @@ Mix_Music* Resources::GetMusic(const std::string& file) {
     if (it != musicTable.end()) {
         return it->second;
     }
-    Mix_Music* music = Mix_LoadMUS(file.c_str());
-    if (music != nullptr) {
-        musicTable[file] = music;
+    Mix_Music* m = Mix_LoadMUS(file.c_str());
+    if (m == nullptr) {
+        throw std::runtime_error("Erro ao tocar musica: " + std::string(SDL_GetError()));
+    } else {
+        std::cout << "Music loaded successfully: " << file << std::endl;
     }
-    return music;
+    if (m != nullptr) {
+        musicTable[file] = m;
+    }
+    return m;
 }
 
 void Resources::ClearMusics() {

@@ -60,5 +60,13 @@
         "cwctype": "cpp",
         "ranges": "cpp",
         "string_view": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "Frabis",
+        "GAMEOBJECT",
+        "hitpoints",
+        "Joao",
+        "PADRAO",
+        "SPRITERENDERER"
+    ]
 }

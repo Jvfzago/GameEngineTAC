@@ -12,11 +12,11 @@ void TileMap::Load(std::string file) {
         throw std::runtime_error("Failed to open tilemap file: " + file);
     }
 
-    infile >> mapWidth >> mapHeight >> mapDepht;
+    infile >> mapWidth >> mapHeight >> mapDepth;
 
-    tileMatrix.resize(mapWidth * mapHeight * mapDepht);
+    tileMatrix.resize(mapWidth * mapHeight * mapDepth);
 
-    for (int z = 0; z < mapDepht; ++z) {
+    for (int z = 0; z < mapDepth; ++z) {
         for (int y = 0; y < mapHeight; ++y) {
             for (int x = 0; x < mapWidth; ++x) {
                 int index;
@@ -34,7 +34,7 @@ void TileMap::SetTileset(TileSet* tileSet) {
 }
 
 int& TileMap::At(int x, int y, int z) {
-    if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight || z < 0 || z >= mapDepht) {
+    if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight || z < 0 || z >= mapDepth) {
         throw std::out_of_range("TileMap::At - Indices out of range");
     }
     return tileMatrix[x + y * mapWidth + z * mapWidth * mapHeight];
@@ -55,13 +55,13 @@ void TileMap::RenderLayer(int layer) {
 }
 
 void TileMap::Render() {
-    for (int z = 0; z < mapDepht; ++z) {
+    for (int z = 0; z < mapDepth; ++z) {
         RenderLayer(z);
     }
 }
 
 void TileMap::Update(float dt) {
-    // Só para o compliador não reclamar
+    // Só para o compilador não reclamar
 }
 
 int TileMap::GetWidth() {
@@ -73,5 +73,5 @@ int TileMap::GetHeight() {
 }
 
 int TileMap::GetDepth() {
-    return mapDepht;
+    return mapDepth;
 }
