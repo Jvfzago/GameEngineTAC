@@ -1,4 +1,4 @@
-dep/State.d bin/State.o: src/State.cpp include/state.h \
+dep/State.d bin/State.o: src/State.cpp include/State.h \
  include/SDL_include.h C:/SDL2/include/SDL2/SDL.h \
  C:/SDL2/include/SDL2/SDL_main.h C:/SDL2/include/SDL2/SDL_stdinc.h \
  C:/SDL2/include/SDL2/SDL_config.h C:/SDL2/include/SDL2/SDL_platform.h \
@@ -252,7 +252,7 @@ dep/State.d bin/State.o: src/State.cpp include/state.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/fstream.tcc \
  C:/TDM-GCC-32/include/direct.h C:/TDM-GCC-32/include/dos.h \
  C:/TDM-GCC-32/include/io.h
-include/state.h:
+include/State.h:
 include/SDL_include.h:
 C:/SDL2/include/SDL2/SDL.h:
 C:/SDL2/include/SDL2/SDL_main.h:

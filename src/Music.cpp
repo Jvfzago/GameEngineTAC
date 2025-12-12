@@ -2,9 +2,7 @@
 #include <stdexcept>
 #include <Resources.h>
 
-Music::Music() {
-    music = nullptr;
-}
+Music::Music(): music(nullptr) {}
 
 Music::Music(string file): music(nullptr) {
     Open(file);

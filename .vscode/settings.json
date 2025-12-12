@@ -66,7 +66,30 @@
         "GAMEOBJECT",
         "hitpoints",
         "Joao",
+        "libogg",
         "PADRAO",
         "SPRITERENDERER"
     ]
+
+    // // --- 1. Ativação e Nomenclatura do Analisador (Resolvendo o "Unknown Setting") ---
+    // "C_Cpp.codeAnalysis.runAutomatically": true,
+    // "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+
+    // // Verificações aninhadas na estrutura codeAnalysis (Isso deve resolver o erro)
+    // "C_Cpp.codeAnalysis.clangTidy.checks": [
+    //     "bugprone-*",         
+    //     "performance-*",      
+    //     "modernize-use-nullptr", // Útil para C++11
+    //     "modernize-loop-convert", // Útil para C++11
+    //     "cppcoreguidelines-pro-type-member-init" // Boa prática para inicialização
+    // ],
+
+    // // --- 2. Compatibilidade de Toolchain (Resolvendo Erros de Tipo) ---
+    // // Dizendo ao Clang para analisar o código como C++11 e usando o GCC.
+    // "C_Cpp.default.cppStandard": "c++11", 
+    // "C_Cpp.default.compilerPath": "C:/TDM-GCC-32/bin/g++.exe",
+    
+    // // --- 3. Filtragem de Cabeçalhos (Evitando conflitos no 'new' e 'cstddef') ---
+    // // Filtra cabeçalhos do sistema C++ e só analisa o código do seu projeto.
+    // "C_Cpp.codeAnalysis.clangTidy.headerFilter": ".*(src|include)/.*",
 }

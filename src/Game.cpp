@@ -17,7 +17,7 @@ Game& Game::GetInstance(){
      return *instance;
  }
 
-Game::Game(string title, int width, int height){
+Game::Game(string title, int width, int height) : window(nullptr), renderer(nullptr), state(nullptr) {
     if(instance != nullptr){
         throw string("Já tem uma instância de Game");
     } else {
@@ -32,23 +32,19 @@ Game::Game(string title, int width, int height){
         throw string("Deu o seguinte erro ao inicializar o SDL_image: ") + SDL_GetError();
     }
 
-    int mixInitResult = Mix_Init(MIX_INIT_OGG); // Linha alterada
+    // 1. Tente inicializar as flags OGG
+    int mixFlags = MIX_INIT_OGG;
+    int initResult = Mix_Init(mixFlags);
 
-    if (mixInitResult == 0) { // Checa a variável
-        throw string("Deu o seguinte erro...");
-    }
-
-    if(Mix_Init(MIX_INIT_OGG) == 0){
-        throw string("Deu o seguinte erro ao inicializar o SDL_mixer: ") + SDL_GetError();
-    }
-    int openAudioResult = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
-
-    if (openAudioResult < 0) {
-        throw string("Deu o seguinte erro ao abrir o áudio: ") + SDL_GetError();
+    // 2. Verifique se todas as flags solicitadas foram realmente inicializadas.
+    // Se o resultado E (AND) as flags for DIFERENTE das flags, significa falha parcial.
+    if ((initResult & mixFlags) != mixFlags) {
+        // Isso garante que se a libogg.dll falhar, a exceção é lançada.
+        throw std::runtime_error("Erro ao inicializar o SDL_mixer (Faltando codec OGG?): " + std::string(Mix_GetError()));
     }
     
     if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0){
-        throw std::runtime_error("Erro ao abrir áudio: " + std::string(SDL_GetError()));
+        throw string("Deu o seguinte erro ao abrir o áudio: ") + SDL_GetError();
     }
     Mix_AllocateChannels(32);
 
@@ -83,7 +79,7 @@ SDL_Renderer* Game::GetRenderer(){
 }
 
 void Game::Run(){
-    // int frameCount = 0;
+    int frameCount = 0;
 
     if (state == nullptr) {
         // Se o State não foi inicializado, jogue um erro claro para o debugger
@@ -95,8 +91,8 @@ void Game::Run(){
 
         state->Update(0);
 
-        // frameCount++;
-        // fprintf(stderr, "Frame: %d\n", frameCount);
+        frameCount++;
+        fprintf(stderr, "Frame: %d\n", frameCount);
 
         
         SDL_RenderClear(renderer);

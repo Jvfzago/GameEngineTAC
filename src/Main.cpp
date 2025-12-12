@@ -7,6 +7,7 @@
 #include "Game.h"
 #include <stdexcept>
 #include <iostream>
+#include <cstdio>
 
 int main(int argc, char* argv[]){
 
@@ -15,10 +16,12 @@ int main(int argc, char* argv[]){
         game.Run();
 
     } catch (const std::string& e) {
-        std::cerr << "ERRO FATAL: " << e << std::endl;
+        // Usa %s para string
+        fprintf(stderr, "ERRO FATAL: %s\n", e.c_str()); 
         return 1;
     } catch (const std::exception& e) {
-        std::cerr << "ERRO PADRAO: " << e.what() << std::endl;
+        // Usa %s para string
+        fprintf(stderr, "ERRO PADRAO: %s\n", e.what()); 
         return 1;
     }
 
