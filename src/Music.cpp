@@ -4,7 +4,7 @@
 
 Music::Music(): music(nullptr) {}
 
-Music::Music(string file): music(nullptr) {
+Music::Music(string file): Music() {
     Open(file);
 }
 

@@ -27,9 +27,15 @@ Game::Game(string title, int width, int height) : window(nullptr), renderer(null
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) != 0){
         throw string("Deu o seguinte erro ao inicializar o SDL: ") + SDL_GetError();
     }
+    else {
+        std::cout << "[Game] SDL initialized successfully." << std::endl;
+    }
 
     if(IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF) == 0){
         throw string("Deu o seguinte erro ao inicializar o SDL_image: ") + SDL_GetError();
+    }
+    else {
+        std::cout << "[Game] SDL_image initialized successfully." << std::endl;
     }
 
     // 1. Tente inicializar as flags OGG
@@ -42,9 +48,15 @@ Game::Game(string title, int width, int height) : window(nullptr), renderer(null
         // Isso garante que se a libogg.dll falhar, a exceção é lançada.
         throw std::runtime_error("Erro ao inicializar o SDL_mixer (Faltando codec OGG?): " + std::string(Mix_GetError()));
     }
+    else {
+        std::cout << "[Game] SDL_mixer initialized successfully with OGG support." << std::endl;
+    }
     
     if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0){
         throw string("Deu o seguinte erro ao abrir o áudio: ") + SDL_GetError();
+    }
+    else {
+        std::cout << "[Game] Audio device opened successfully." << std::endl;
     }
     Mix_AllocateChannels(32);
 
@@ -52,13 +64,20 @@ Game::Game(string title, int width, int height) : window(nullptr), renderer(null
     if(window == nullptr){
         throw string("Deu o seguinte erro ao criar a janela: ") + SDL_GetError();
     }
+    else {
+        std::cout << "[Game] Window created successfully." << std::endl;
+    }
     
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if(renderer == nullptr){
         throw string("Deu o seguinte erro ao criar o renderizador: ") + SDL_GetError();
     }
+    else {
+        std::cout << "[Game] Renderer created successfully." << std::endl;
+    }
 
     state = new State();
+    
 }
 
 Game::~Game(){
@@ -92,7 +111,7 @@ void Game::Run(){
         state->Update(0);
 
         frameCount++;
-        fprintf(stderr, "Frame: %d\n", frameCount);
+        fprintf(stderr, "Frame: %d", frameCount);
 
         
         SDL_RenderClear(renderer);
@@ -102,6 +121,7 @@ void Game::Run(){
 
     }
 
+    std::cout << "[Game] Game loop has ended. Cleaning up resources." << std::endl;
     Resources::ClearImages();
     Resources::ClearMusics();
     Resources::ClearSounds();

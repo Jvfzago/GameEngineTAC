@@ -2,12 +2,16 @@
 #include "Game.h"
 #include "Resources.h"
 
-Sprite::Sprite() : texture(nullptr){
+Sprite::Sprite() : texture(nullptr), 
+clipRect({}),
+width(0), height(0),
+frameCountW(1), frameCountH(1) {
     
 }
 
-Sprite::Sprite(string file, int frameCountW, int frameCountH) : 
-frameCountW(frameCountW), frameCountH(frameCountH), texture(nullptr){
+Sprite::Sprite(string file, int frameCountW, int frameCountH) : Sprite() {
+    this->frameCountW = frameCountW;
+    this->frameCountH = frameCountH;
     Open(file);
 }
 

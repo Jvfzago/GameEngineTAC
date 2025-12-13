@@ -40,10 +40,13 @@ State::State() : quitRequested(false){
         printf("Erro ao tocar musica de fundo: %s\n", e.what());
     }
     
+    std::cout << "[State] Music played successfully." << std::endl;
     
     GameObject* bg = new GameObject();
     bg->AddComponent(std::unique_ptr<SpriteRenderer>(new SpriteRenderer(*bg, "Recursos/img/Background.png")));
     AddObject(bg);
+
+    std::cout << "[State] Background loaded successfully." << std::endl;
 
     GameObject* tileMap = new GameObject();
     TileSet* tileSet = new TileSet(64, 64, "Recursos/img/Tileset.png");
@@ -52,11 +55,15 @@ State::State() : quitRequested(false){
     tileMap->box.SetW(0);
     tileMap->box.SetH(0);
 
+    std::cout << "[State] TileMap loaded successfully." << std::endl;
 
+    //-----------------------------------------------------------------------------------
+    
     GameObject* zombie = new GameObject();
     zombie->box.SetX(600);
     zombie->box.SetY(450);
-    printf("State criado\n");
+
+    std::cout << "[State] State initialized successfully." << std::endl;
 }
 
 State::~State(){
