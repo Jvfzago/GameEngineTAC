@@ -17,7 +17,8 @@ Game& Game::GetInstance(){
      return *instance;
  }
 
-Game::Game(string title, int width, int height) : window(nullptr), renderer(nullptr), state(nullptr) {
+Game::Game(string title, int width, int height) : 
+window(nullptr), renderer(nullptr), state(nullptr) {
     if(instance != nullptr){
         throw string("Já tem uma instância de Game");
     } else {
@@ -38,22 +39,15 @@ Game::Game(string title, int width, int height) : window(nullptr), renderer(null
         std::cout << "[Game] SDL_image initialized successfully." << std::endl;
     }
 
-    // 1. Tente inicializar as flags OGG
-    int mixFlags = MIX_INIT_OGG;
-    int initResult = Mix_Init(mixFlags);
-
-    // 2. Verifique se todas as flags solicitadas foram realmente inicializadas.
-    // Se o resultado E (AND) as flags for DIFERENTE das flags, significa falha parcial.
-    if ((initResult & mixFlags) != mixFlags) {
-        // Isso garante que se a libogg.dll falhar, a exceção é lançada.
-        throw std::runtime_error("Erro ao inicializar o SDL_mixer (Faltando codec OGG?): " + std::string(Mix_GetError()));
+    if(Mix_Init(MIX_INIT_OGG) == 0){
+        throw string("Deu o seguinte erro ao inicializar o SDL_mixer: ") + SDL_GetError();
     }
     else {
-        std::cout << "[Game] SDL_mixer initialized successfully with OGG support." << std::endl;
+        std::cout << "[Game] SDL_mixer initialized successfully." << std::endl;
     }
     
     if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0){
-        throw string("Deu o seguinte erro ao abrir o áudio: ") + SDL_GetError();
+        throw string("Deu o seguinte erro ao abrir o áudio (Mix_OpenAudio): ") + SDL_GetError();
     }
     else {
         std::cout << "[Game] Audio device opened successfully." << std::endl;
@@ -78,6 +72,7 @@ Game::Game(string title, int width, int height) : window(nullptr), renderer(null
 
     state = new State();
     
+    std::cout << "[Game] Game instance initialized successfully." << std::endl;
 }
 
 Game::~Game(){
@@ -98,27 +93,22 @@ SDL_Renderer* Game::GetRenderer(){
 }
 
 void Game::Run(){
-    int frameCount = 0;
+    int frameCount = 0; //Apenas para debug
 
     if (state == nullptr) {
-        // Se o State não foi inicializado, jogue um erro claro para o debugger
         throw std::runtime_error("Erro FATAL: O objeto State (state) é nulo!");
     }
 
     while(!state->QuitRequested()){
-
-
         state->Update(0);
 
-        frameCount++;
-        fprintf(stderr, "Frame: %d", frameCount);
+        frameCount++; //Apenas para debug
+        fprintf(stderr, "Frame: %d", frameCount); //Apenas para debug
 
-        
         SDL_RenderClear(renderer);
         state->Render();
         SDL_RenderPresent(renderer);
         SDL_Delay(33);
-
     }
 
     std::cout << "[Game] Game loop has ended. Cleaning up resources." << std::endl;

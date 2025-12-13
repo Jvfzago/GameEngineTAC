@@ -23,7 +23,7 @@ void Sprite::Open(string file){
 
     texture = Resources::GetImage(file);
     if(texture == nullptr){
-        throw string("Deu o seguinte erro ao carregar a textura: ") + SDL_GetError();
+        throw string("[Sprite/Open] Deu o seguinte erro ao carregar a textura: ") + SDL_GetError();
     }
     SDL_QueryTexture(texture, nullptr, nullptr, &width, &height);
     SetClip(0,0,width,height);
@@ -38,7 +38,7 @@ void Sprite::SetClip(int x, int y, int w,int h){
 
 void Sprite::Render(int x, int y, int w, int h){
     if(texture == nullptr){
-        throw string("Não tem textura pra renderizar");
+        throw string("[Sprite/Render] Não tem textura pra renderizar.");
     }
     SDL_Rect dst;
     dst.x = x;
@@ -62,7 +62,7 @@ bool Sprite::IsOpen(){
 
 void Sprite::SetFrame(int frame){
     if(frame < 0 || frame >= frameCountW * frameCountH){
-        throw string("Frame inválido");
+        throw string("[Sprite/SetFrame] Frame inválido.");
     }
     int frameW = width / frameCountW;
     int frameH = height / frameCountH;

@@ -14,14 +14,11 @@ int main(int argc, char* argv[]){
     try {
         Game& game = Game::GetInstance();
         game.Run();
-
     } catch (const std::string& e) {
-        // Usa %s para string
-        fprintf(stderr, "ERRO FATAL: %s\n", e.c_str()); 
+        fprintf(stderr, "[Main] ERRO FATAL: %s\n", e.c_str()); 
         return 1;
     } catch (const std::exception& e) {
-        // Usa %s para string
-        fprintf(stderr, "ERRO PADRAO: %s\n", e.what()); 
+        fprintf(stderr, "[Main] ERRO PADRAO: %s\n", e.what()); 
         return 1;
     }
 

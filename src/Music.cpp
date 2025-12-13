@@ -12,17 +12,16 @@ void Music::Play(int times) {
 
     if (Mix_QuerySpec(nullptr, nullptr, nullptr) == 0) {
         // Se a SDL_mixer não estiver aberta, lance um erro (ou não faça nada).
-        throw std::runtime_error("SDL_mixer não está inicializado. (Mix_OpenAudio não foi chamado com sucesso.)");
+        throw std::runtime_error("[Music/Play] SDL_mixer não está inicializado. (Mix_OpenAudio não foi chamado com sucesso.)");
         // Se este for o caso, a SDL_mixer está falhando no Game::Game.
         return; 
     }
 
     if (music == nullptr) {
-        // Use std::runtime_error para melhor compatibilidade com try-catch
-        throw std::runtime_error("Não ha musica para tocar: Ponteiro nulo.");
+        throw std::runtime_error("[Music::Play] Não ha musica para tocar: Ponteiro nulo.");
     }
     if (Mix_PlayMusic(music, times) == -1) {
-        throw std::runtime_error("Erro ao tocar musica: " + std::string(SDL_GetError()));
+        throw std::runtime_error("[Music::Play] Erro ao tocar musica: " + std::string(SDL_GetError()));
     }
 }
 
@@ -36,7 +35,7 @@ void Music::Open(string file) {
     }
     music = Resources::GetMusic(file);
     if(music == nullptr){
-        throw std::runtime_error(std::string("Deu o seguinte erro ao carregar a musica: ") + SDL_GetError());
+        throw std::runtime_error(std::string("[Music::Open] Deu o seguinte erro ao carregar a musica: ") + SDL_GetError());
     }
 }
 
