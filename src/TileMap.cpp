@@ -2,7 +2,12 @@
 
 #include <fstream>
 #include <stdexcept>
-TileMap::TileMap(GameObject& associated, std::string file, TileSet* tileSet)  : Component(associated), tileSet(tileSet) {
+TileMap::TileMap(GameObject& associated, std::string file, TileSet* tileSet)
+     : Component(associated), 
+     tileSet(tileSet), 
+     mapWidth(0),
+     mapHeight(0),
+     mapDepth(0) {
     Load(file);
 }
 

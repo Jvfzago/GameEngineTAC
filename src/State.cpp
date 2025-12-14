@@ -3,6 +3,7 @@
 #include "SpriteRenderer.h"
 #include "TileSet.h"
 #include "TileMap.h"
+#include "Zombie.h"
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
@@ -45,6 +46,8 @@ State::State() : quitRequested(false){
     //-----------------------------------------------------------------------
 
     GameObject* zombie = new GameObject();
+    zombie->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie)));
+    AddObject(zombie);
     zombie->box.SetX(600);
     zombie->box.SetY(450);
 
