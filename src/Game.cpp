@@ -93,7 +93,7 @@ SDL_Renderer* Game::GetRenderer(){
 }
 
 void Game::Run(){
-    int frameCount = 0; //Apenas para debug
+    // int frameCount = 0; //Apenas para debug
 
     if (state == nullptr) {
         throw std::runtime_error("Erro FATAL: O objeto State (state) é nulo!");
@@ -102,8 +102,8 @@ void Game::Run(){
     while(!state->QuitRequested()){
         state->Update(0);
 
-        frameCount++; //Apenas para debug
-        fprintf(stderr, "Frame: %d", frameCount); //Apenas para debug
+        // frameCount++; //Apenas para debug
+        // fprintf(stderr, "Frame: %d", frameCount); //Apenas para debug
 
         SDL_RenderClear(renderer);
         state->Render();

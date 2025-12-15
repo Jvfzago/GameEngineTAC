@@ -4,6 +4,7 @@
 #include <stdexcept>
 TileMap::TileMap(GameObject& associated, std::string file, TileSet* tileSet)
      : Component(associated), 
+     tileMatrix(),
      tileSet(tileSet), 
      mapWidth(0),
      mapHeight(0),
@@ -14,10 +15,14 @@ TileMap::TileMap(GameObject& associated, std::string file, TileSet* tileSet)
 void TileMap::Load(std::string file) {
     std::ifstream infile(file);
     if (!infile.is_open()) {
-        throw std::runtime_error("Failed to open tilemap file: " + file);
+        throw std::runtime_error("[TileMap::Load] Failed to open tilemap file: " + file);
     }
 
-    infile >> mapWidth >> mapHeight >> mapDepth;
+    char comma; //Variável temporária para ler as vírgulas do arquivo
+
+    infile >> mapWidth >> comma;
+    infile >> mapHeight >> comma;
+    infile >> mapDepth >> comma;
 
     tileMatrix.resize(mapWidth * mapHeight * mapDepth);
 
@@ -25,8 +30,11 @@ void TileMap::Load(std::string file) {
         for (int y = 0; y < mapHeight; ++y) {
             for (int x = 0; x < mapWidth; ++x) {
                 int index;
-                infile >> index;
+                if (!(infile >> index)) {
+                    throw std::runtime_error("[TileMap::Load] Error reading tile index from file: " + file);
+                }
                 tileMatrix[x + y * mapWidth + z * mapWidth * mapHeight] = index;
+                infile >> comma; //Lê a vírgula após o número
             }
         }
     }
@@ -40,14 +48,14 @@ void TileMap::SetTileset(TileSet* tileSet) {
 
 int& TileMap::At(int x, int y, int z) {
     if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight || z < 0 || z >= mapDepth) {
-        throw std::out_of_range("TileMap::At - Indices out of range");
+        throw std::out_of_range("[TileMap::At] Indices out of range");
     }
     return tileMatrix[x + y * mapWidth + z * mapWidth * mapHeight];
 }
 
 void TileMap::RenderLayer(int layer) {
     if (!tileSet) {
-        throw std::runtime_error("TileMap::RenderLayer - TileSet not set");
+        throw std::runtime_error("[TileMap::RenderLayer] TileSet not set");
     }
     for (int y = 0; y < mapHeight; ++y) {
         for (int x = 0; x < mapWidth; ++x) {

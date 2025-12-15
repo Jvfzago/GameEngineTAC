@@ -45,11 +45,17 @@ State::State() : quitRequested(false){
 
     //-----------------------------------------------------------------------
 
-    GameObject* zombie = new GameObject();
-    zombie->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie)));
-    AddObject(zombie);
-    zombie->box.SetX(600);
-    zombie->box.SetY(450);
+    GameObject* zombie1 = new GameObject();
+    zombie1->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie1)));
+    AddObject(zombie1);
+    zombie1->box.SetX(600);
+    zombie1->box.SetY(450);
+
+    GameObject* zombie2 = new GameObject();
+    zombie2->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie2)));
+    AddObject(zombie2);
+    zombie2->box.SetX(700);
+    zombie2->box.SetY(450);
 
     //-----------------------------------------------------------------------
 
