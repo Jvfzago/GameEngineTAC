@@ -17,6 +17,8 @@ class SpriteRenderer : public Component {
     void Update(float dt);
     void Render();
     void SetFrame(int frame); // frame = 0..(frameCountW*frameCountH - 1)
+
+    void setCameraFollower(bool cameraFollower);
 };
 
 #endif  // SPRITERENDERER_H

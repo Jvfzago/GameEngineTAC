@@ -32,6 +32,7 @@ State::State() : quitRequested(false){
     
     GameObject* bg = new GameObject();
     bg->AddComponent(std::unique_ptr<SpriteRenderer>(new SpriteRenderer(*bg, "Recursos/img/Background.png")));
+    bg->GetComponent<SpriteRenderer>()->setCameraFollower(true);
     AddObject(bg);
 
     std::cout << "[State::State] Background loaded successfully." << std::endl;

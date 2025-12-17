@@ -17,22 +17,22 @@ class Sprite{
         int frameCountW;
         int frameCountH;
 
-        bool cameraFollwer;
     public:
         Sprite();
         Sprite(std::string file, int frameCountW = 1, int frameCountH = 1);
         ~Sprite();
-
+        
         void Open(std::string file);
         void SetClip(int x, int y, int w, int h);
         void Render(int x, int y, int w, int h);
         int GetWidth();
         int GetHeight();
         bool IsOpen();
-
+        
         void SetFrame(int frame); // frame = 0..(frameCountW*frameCountH - 1)
         void SetFrameCount(int frameCountW, int frameCountH);
         
+        bool cameraFollower;
 };
 
 #endif // SPRITE_H

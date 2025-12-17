@@ -6,7 +6,7 @@
 Sprite::Sprite() : texture(nullptr), 
 clipRect({}),
 width(0), height(0),
-frameCountW(1), frameCountH(1), cameraFollwer(false) {
+frameCountW(1), frameCountH(1), cameraFollower(false) {
     
 }
 
@@ -42,8 +42,14 @@ void Sprite::Render(int x, int y, int w, int h){
         throw string("[Sprite::Render] Não tem textura pra renderizar.");
     }
     SDL_Rect dst;
-    dst.x = x - (int)Camera::pos.GetX();
-    dst.y = y - (int)Camera::pos.GetY();
+    if (!cameraFollower) {
+        dst.x = x - static_cast<int>(Camera::pos.GetX());
+        dst.y = y - static_cast<int>(Camera::pos.GetY());
+    } else {
+        dst.x = x;
+        dst.y = y;
+    }
+
     dst.w = w;
     dst.h = h;
     SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, &clipRect, &dst);
