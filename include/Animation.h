@@ -7,15 +7,15 @@ class Animation {
    private:
     int frameStart;
     int frameEnd;
-    int frameTime;
+    float frameTime;
 
    public:
     Animation() = default;
-    Animation(int frameStart, int frameEnd, int frameTime);
+    Animation(int frameStart, int frameEnd, float frameTime);
 
     int GetFrameStart() const;
     int GetFrameEnd() const;
-    int GetFrameTime() const;
+    float GetFrameTime() const;
     
 };
 

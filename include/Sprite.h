@@ -16,7 +16,8 @@ class Sprite{
 
         int frameCountW;
         int frameCountH;
-        
+
+        bool cameraFollwer;
     public:
         Sprite();
         Sprite(std::string file, int frameCountW = 1, int frameCountH = 1);

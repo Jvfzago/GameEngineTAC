@@ -5,6 +5,7 @@
 #include "TileMap.h"
 #include "Zombie.h"
 #include "InputManager.h"
+#include "Camera.h"
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
@@ -73,12 +74,16 @@ void State::Update(float dt){
     //Atualiza todos os GameObjects
     for (size_t i = 0; i < objectArray.size(); i++) {
     objectArray[i]->Update(dt);
-}
+    }   
+
+    //Atualiza a câmera
+    Camera::Update(dt);
+
     //-----------------------------------------------------
     if(InputManager::GetInstance().KeyPress(SDLK_SPACE)){
         GameObject* zombie = new GameObject();
-        zombie->box.SetX(InputManager::GetInstance().GetMouseX());
-        zombie->box.SetY(InputManager::GetInstance().GetMouseY());
+        zombie->box.SetX(InputManager::GetInstance().GetMouseX() + Camera::pos.GetX());
+        zombie->box.SetY(InputManager::GetInstance().GetMouseY() + Camera::pos.GetY());
         zombie->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie)));
         AddObject(zombie);
     }
@@ -93,9 +98,11 @@ void State::Update(float dt){
     objectArray.erase(
         std::remove_if(objectArray.begin(), objectArray.end(),
             [](std::unique_ptr<GameObject>& go_ptr) { 
-                
                 bool isDead = go_ptr->IsDead();
                 
+                //Se deletar o objeto que a camera segue, o programa crasha
+                //Crie verificação aqui para evitar isso
+
                 return isDead; 
             }),
         objectArray.end());

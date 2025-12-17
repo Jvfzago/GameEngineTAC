@@ -2,6 +2,7 @@
 #include "SpriteRenderer.h"
 #include "Animator.h"
 #include "InputManager.h"
+#include "Camera.h"
 
 
 
@@ -19,9 +20,9 @@ Zombie::Zombie(GameObject& associated) :
     
     Animator* animator = new Animator(associated);
     associated.AddComponent(std::unique_ptr<Animator>(animator));
-    animator->AddAnimation("walking", Animation(0, 3, 10));
-    animator->AddAnimation("dead", Animation(5, 5, 0));
-    animator->AddAnimation("hit", Animation(4, 4, 0));
+    animator->AddAnimation("walking", Animation(0, 3, 0.5f));
+    animator->AddAnimation("dead", Animation(5, 5, 0.0f));
+    animator->AddAnimation("hit", Animation(4, 4, 0.0f));
     animator->SetAnimation("walking");
 }
 
@@ -55,11 +56,14 @@ void Zombie::Update(float dt) {
             return;
         }
     } else {
+        float mouseWorldX = InputManager::GetInstance().GetMouseX() + Camera::pos.GetX();
+        float mouseWorldY = InputManager::GetInstance().GetMouseY() + Camera::pos.GetY();
+
         if (InputManager::GetInstance().MousePress(SDL_BUTTON_LEFT)) {
-            if( InputManager::GetInstance().GetMouseX() >= associated.box.GetX() &&
-                InputManager::GetInstance().GetMouseX() <= associated.box.GetX() + associated.box.GetW() &&
-                InputManager::GetInstance().GetMouseY() >= associated.box.GetY() &&
-                InputManager::GetInstance().GetMouseY() <= associated.box.GetY() + associated.box.GetH()
+            if( mouseWorldX >= associated.box.GetX() &&
+                mouseWorldX <= associated.box.GetX() + associated.box.GetW() &&
+                mouseWorldY >= associated.box.GetY() &&
+                mouseWorldY <= associated.box.GetY() + associated.box.GetH()
             ) {
                 Damage(20);
             }

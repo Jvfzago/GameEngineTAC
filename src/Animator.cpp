@@ -6,8 +6,8 @@
 Animator::Animator(GameObject& associated) 
     : Component(associated), 
     animations(),
-    frameStart(0), frameEnd(0), frameTime(0), 
-    currentFrame(0), timeElapsed(0) {}
+    frameStart(0), frameEnd(0), frameTime(0.0f), 
+    currentFrame(0), timeElapsed(0.0f) {}
 
 void Animator::Update(float dt) {
     if (animations.empty()) return;
@@ -37,7 +37,7 @@ void Animator::SetAnimation(std::string name) {
         frameEnd = anim.GetFrameEnd();
         frameTime = anim.GetFrameTime();
         currentFrame = frameStart;
-        timeElapsed = 0;
+        timeElapsed = 0.0f;
 
         auto sprite = associated.GetComponent<SpriteRenderer>();
         if (sprite) {sprite->SetFrame(currentFrame);}

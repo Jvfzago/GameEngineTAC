@@ -1,6 +1,6 @@
 #include "Animation.h"
 
-Animation::Animation(int frameStart, int frameEnd, int frameTime) :
+Animation::Animation(int frameStart, int frameEnd, float frameTime) :
 frameStart(frameStart), frameEnd(frameEnd), frameTime(frameTime) {
     
 }
@@ -11,6 +11,6 @@ int Animation::GetFrameStart() const {
 int Animation::GetFrameEnd() const {
     return frameEnd;
 }
-int Animation::GetFrameTime() const {
+float Animation::GetFrameTime() const {
     return frameTime;
 }
