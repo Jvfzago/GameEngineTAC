@@ -26,6 +26,10 @@ void SpriteRenderer::SetFrame(int frame){
     sprite.SetFrame(frame);
 }
 
+void SpriteRenderer::Start(){
+    
+}
+
 void SpriteRenderer::Update(float dt){
     
 }

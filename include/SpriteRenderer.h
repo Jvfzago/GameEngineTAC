@@ -14,8 +14,9 @@ class SpriteRenderer : public Component {
     SpriteRenderer(GameObject& associated, std::string file, int frameCountW = 1, int frameCountH = 1);
     void Open(std::string file);
     void SetFrameCount(int frameCountW, int frameCountH);
-    void Update(float dt);
-    void Render();
+    void Start() override;
+    void Update(float dt) override;
+    void Render() override;
     void SetFrame(int frame); // frame = 0..(frameCountW*frameCountH - 1)
 
     void setCameraFollower(bool cameraFollower);

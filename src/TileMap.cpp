@@ -73,8 +73,11 @@ void TileMap::Render() {
     }
 }
 
+void TileMap::Start() {
+
+}
 void TileMap::Update(float dt) {
-    // Só para o compilador não reclamar
+
 }
 
 int TileMap::GetWidth() {

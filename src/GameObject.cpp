@@ -2,12 +2,21 @@
 
 #include <algorithm>
 
-GameObject::GameObject() : isDead(false), components() {
+GameObject::GameObject() : isDead(false), components(), started(false) {
 }
 
 GameObject::~GameObject() {
     components.clear();
 
+}
+
+void GameObject::Start(){
+    if(!started){
+        for(auto& cpt : components){
+            cpt->Start();
+        }
+        started = true;
+    }
 }
 
 void GameObject::Update(float dt){
@@ -33,6 +42,9 @@ void GameObject::RequestDelete(){
 void GameObject::AddComponent(std::unique_ptr<Component>&& cpt){
     if (isDead) return;
     components.push_back(std::move(cpt));
+    if (started){
+        components.back()->Start();
+    }
 }
 
 void GameObject::RemoveComponent(Component* cpt) {

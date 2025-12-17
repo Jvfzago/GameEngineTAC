@@ -15,6 +15,8 @@ class Camera {
         static void Follow(GameObject& newFocus);
         static void Unfollow();
         static void Update(float dt);
+
+        static GameObject* GetFocus();
 };
 
 #endif // CAMERA_H

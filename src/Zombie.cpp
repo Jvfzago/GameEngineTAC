@@ -44,6 +44,10 @@ void Zombie::Damage(int damage) {
     }
 }
 
+void Zombie::Start() {
+    
+}
+
 void Zombie::Update(float dt) {
     if (associated.IsDead()) return;
     hitTimer.Update(dt);

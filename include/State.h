@@ -17,17 +17,23 @@ class State{
         Music music;
         bool quitRequested;
 
-        std::vector<std::unique_ptr<GameObject>> objectArray;
+        std::vector<std::shared_ptr<GameObject>> objectArray;
+
+        bool started;
     public:
         State();
         ~State();
         
         bool QuitRequested();
+        void Start();
         void LoadAssets();
         void Update(float dt);
         void Render();
 
-        void AddObject(GameObject* go);
+        std::weak_ptr<GameObject> AddObject(GameObject* go);
+        std::weak_ptr<GameObject> GetObjectPtr(GameObject* go);
+
+
 };
 
 #endif // STATE_H

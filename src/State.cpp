@@ -18,7 +18,7 @@
 #define PATH_BUFFER_SIZE 260
 
 
-State::State() : quitRequested(false){
+State::State() : quitRequested(false), started(false) {
     std::cout << "[State::State] Initializing State..." << std::endl;
 
     try {
@@ -66,6 +66,16 @@ void State::LoadAssets(){
     
 }
 
+void State::Start(){
+    LoadAssets();
+    if(!started){
+        for(auto& go: objectArray){
+            go->Start();
+        }
+        started = true;
+    }
+}
+
 void State::Update(float dt){
     //Verifica se o usuário pediu para sair
     if(InputManager::GetInstance().KeyPress(SDLK_ESCAPE) || InputManager::GetInstance().QuitRequested()){
@@ -98,11 +108,12 @@ void State::Update(float dt){
     //Remove os GameObjects "mortos"
     objectArray.erase(
         std::remove_if(objectArray.begin(), objectArray.end(),
-            [](std::unique_ptr<GameObject>& go_ptr) { 
+            [](std::shared_ptr<GameObject>& go_ptr) { 
                 bool isDead = go_ptr->IsDead();
                 
-                //Se deletar o objeto que a camera segue, o programa crasha
-                //Crie verificação aqui para evitar isso
+                if (isDead && Camera::GetFocus() == go_ptr.get()) {
+                Camera::Unfollow();
+                }
 
                 return isDead; 
             }),
@@ -115,6 +126,23 @@ void State::Render(){
     }
 }
 
-void State::AddObject(GameObject* go){
-    objectArray.emplace_back(go);
+std::weak_ptr<GameObject> State::AddObject(GameObject* go){
+    std::shared_ptr<GameObject> go_shared_ptr(go);
+    objectArray.push_back(go_shared_ptr);
+    if(started){
+        go_shared_ptr->Start();
+    }
+    return std::weak_ptr<GameObject>(go_shared_ptr);
+}
+
+std::weak_ptr<GameObject> State::GetObjectPtr(GameObject* go){
+    // Essa função é geralmente usada para se obter o weak_ptr
+    // de algum objeto que já temos o ponteiro puro dele e
+    // que já foi adicionado ao vetor de objetos.
+    for(auto& obj_ptr: objectArray){
+        if(obj_ptr.get() == go){
+            return std::weak_ptr<GameObject>(obj_ptr);
+        }
+    }
+    return std::weak_ptr<GameObject>();
 }

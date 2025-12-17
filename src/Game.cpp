@@ -102,6 +102,8 @@ void Game::Run(){
         throw std::runtime_error("Erro FATAL: O objeto State (state) é nulo!");
     }
 
+    state->Start();
+
     while(!state->QuitRequested()){
         CalculateDeltaTime();
         InputManager::GetInstance().Update();

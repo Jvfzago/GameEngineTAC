@@ -21,9 +21,12 @@ class TileMap : public Component {
         void Load(std::string file);
         void SetTileset(TileSet* tileSet);
         int& At(int x, int y, int z = 0);
+
+        void Start() override;
+        void Update(float dt) override;
         void Render() override;
         void RenderLayer(int layer);
-        void Update(float dt) override;
+        
         int GetWidth();
         int GetHeight();
         int GetDepth();

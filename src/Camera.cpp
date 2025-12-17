@@ -41,3 +41,7 @@ void Camera::Update(float dt) {
         pos = pos.Add(speed.Mul(dt));
     }
 }
+
+GameObject* Camera::GetFocus() {
+    return focus;
+}

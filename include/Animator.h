@@ -16,8 +16,11 @@ class Animator : public Component {
         float timeElapsed;
     public:
         Animator(GameObject& associated);
+
+        void Start() override;
         void Update(float dt) override;
         void Render() override;
+        
         void SetAnimation(std::string name);
         void AddAnimation(std::string name, Animation anim);
 };

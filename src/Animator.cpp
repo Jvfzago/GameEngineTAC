@@ -9,6 +9,9 @@ Animator::Animator(GameObject& associated)
     frameStart(0), frameEnd(0), frameTime(0.0f), 
     currentFrame(0), timeElapsed(0.0f) {}
 
+void Animator::Start() {
+}
+
 void Animator::Update(float dt) {
     if (animations.empty()) return;
     if (frameTime <= 0) {}
