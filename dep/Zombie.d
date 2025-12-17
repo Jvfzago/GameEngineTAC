@@ -219,7 +219,8 @@ dep/Zombie.d bin/Zombie.o: src/Zombie.cpp include/Zombie.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h \
+ include/InputManager.h
 include/Zombie.h:
 include/Component.h:
 include/Sound.h:
@@ -483,3 +484,4 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h:
+include/InputManager.h:

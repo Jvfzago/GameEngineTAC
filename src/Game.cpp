@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Resources.h"
+#include "InputManager.h"
 #include <stdexcept>
 #include <cstdio>
 
@@ -100,6 +101,8 @@ void Game::Run(){
     }
 
     while(!state->QuitRequested()){
+        InputManager::GetInstance().Update();
+
         state->Update(0);
 
         // frameCount++; //Apenas para debug

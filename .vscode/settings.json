@@ -66,8 +66,10 @@
         "GAMEOBJECT",
         "hitpoints",
         "Joao",
+        "keysym",
         "libogg",
         "PADRAO",
+        "SDLK",
         "SPRITERENDERER"
     ]
 

@@ -4,6 +4,7 @@
 #include "TileSet.h"
 #include "TileMap.h"
 #include "Zombie.h"
+#include "InputManager.h"
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
@@ -45,17 +46,6 @@ State::State() : quitRequested(false){
 
     //-----------------------------------------------------------------------
 
-    GameObject* zombie1 = new GameObject();
-    zombie1->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie1)));
-    AddObject(zombie1);
-    zombie1->box.SetX(600);
-    zombie1->box.SetY(450);
-
-    GameObject* zombie2 = new GameObject();
-    zombie2->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie2)));
-    AddObject(zombie2);
-    zombie2->box.SetX(700);
-    zombie2->box.SetY(450);
 
     //-----------------------------------------------------------------------
 
@@ -75,14 +65,31 @@ void State::LoadAssets(){
 }
 
 void State::Update(float dt){
-    if(SDL_QuitRequested()){
+    //Verifica se o usuário pediu para sair
+    if(InputManager::GetInstance().KeyPress(SDLK_ESCAPE) || InputManager::GetInstance().QuitRequested()){
         quitRequested = true;
     }
 
+    //-----------------------------------------------------
+    if(InputManager::GetInstance().KeyPress(SDLK_SPACE)){
+        GameObject* zombie = new GameObject();
+        zombie->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie)));
+        AddObject(zombie);
+        zombie->box.SetX(InputManager::GetInstance().GetMouseX());
+        zombie->box.SetY(InputManager::GetInstance().GetMouseY());
+    }
+
+
+
+
+    //-----------------------------------------------------
+
+    //Atualiza todos os GameObjects
     for(auto& go: objectArray){
         go->Update(dt);
     }
 
+    //Remove os GameObjects "mortos"
     objectArray.erase(
         std::remove_if(objectArray.begin(), objectArray.end(),
             [](std::unique_ptr<GameObject>& go_ptr) { 

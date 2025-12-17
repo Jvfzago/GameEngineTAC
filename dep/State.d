@@ -215,12 +215,18 @@ dep/State.d bin/State.o: src/State.cpp include/State.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/backward/auto_ptr.h \
  include/SpriteRenderer.h include/TileSet.h include/TileMap.h \
  include/TileSet.h include/Zombie.h include/Sound.h \
+ include/InputManager.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stdexcept \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ostream \
@@ -512,12 +518,18 @@ include/TileMap.h:
 include/TileSet.h:
 include/Zombie.h:
 include/Sound.h:
+include/InputManager.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stdexcept:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ostream:
