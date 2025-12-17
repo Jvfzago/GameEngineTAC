@@ -214,7 +214,7 @@ dep/State.d bin/State.o: src/State.cpp include/State.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/atomic_lockfree_defines.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/backward/auto_ptr.h \
  include/SpriteRenderer.h include/TileSet.h include/TileMap.h \
- include/TileSet.h include/Zombie.h include/Sound.h \
+ include/TileSet.h include/Zombie.h include/Sound.h include/Timer.h \
  include/InputManager.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h \
@@ -518,6 +518,7 @@ include/TileMap.h:
 include/TileSet.h:
 include/Zombie.h:
 include/Sound.h:
+include/Timer.h:
 include/InputManager.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h:

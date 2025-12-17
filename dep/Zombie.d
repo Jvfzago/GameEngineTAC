@@ -97,10 +97,10 @@ dep/Zombie.d bin/Zombie.o: src/Zombie.cpp include/Zombie.h \
  C:/SDL2/include/SDL2/SDL_audio.h C:/SDL2/include/SDL2/SDL_endian.h \
  C:/SDL2/include/SDL2/SDL_mutex.h C:/SDL2/include/SDL2/SDL_thread.h \
  C:/SDL2/include/SDL2/SDL_atomic.h C:/SDL2/include/SDL2/SDL_version.h \
- include/SpriteRenderer.h include/Sprite.h include/SDL_include.h \
- C:/SDL2/include/SDL2/SDL.h C:/SDL2/include/SDL2/SDL_main.h \
- C:/SDL2/include/SDL2/SDL_assert.h C:/SDL2/include/SDL2/SDL_clipboard.h \
- C:/SDL2/include/SDL2/SDL_cpuinfo.h \
+ include/Timer.h include/SpriteRenderer.h include/Sprite.h \
+ include/SDL_include.h C:/SDL2/include/SDL2/SDL.h \
+ C:/SDL2/include/SDL2/SDL_main.h C:/SDL2/include/SDL2/SDL_assert.h \
+ C:/SDL2/include/SDL2/SDL_clipboard.h C:/SDL2/include/SDL2/SDL_cpuinfo.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/immintrin.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/mmintrin.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/xmmintrin.h \
@@ -338,6 +338,7 @@ C:/SDL2/include/SDL2/SDL_mutex.h:
 C:/SDL2/include/SDL2/SDL_thread.h:
 C:/SDL2/include/SDL2/SDL_atomic.h:
 C:/SDL2/include/SDL2/SDL_version.h:
+include/Timer.h:
 include/SpriteRenderer.h:
 include/Sprite.h:
 include/SDL_include.h:

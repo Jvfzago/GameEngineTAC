@@ -70,13 +70,17 @@ void State::Update(float dt){
         quitRequested = true;
     }
 
+    //Atualiza todos os GameObjects
+    for (size_t i = 0; i < objectArray.size(); i++) {
+    objectArray[i]->Update(dt);
+}
     //-----------------------------------------------------
     if(InputManager::GetInstance().KeyPress(SDLK_SPACE)){
         GameObject* zombie = new GameObject();
-        zombie->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie)));
-        AddObject(zombie);
         zombie->box.SetX(InputManager::GetInstance().GetMouseX());
         zombie->box.SetY(InputManager::GetInstance().GetMouseY());
+        zombie->AddComponent(std::unique_ptr<Zombie>(new Zombie(*zombie)));
+        AddObject(zombie);
     }
 
 
@@ -84,10 +88,6 @@ void State::Update(float dt){
 
     //-----------------------------------------------------
 
-    //Atualiza todos os GameObjects
-    for(auto& go: objectArray){
-        go->Update(dt);
-    }
 
     //Remove os GameObjects "mortos"
     objectArray.erase(

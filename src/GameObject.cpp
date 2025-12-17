@@ -31,6 +31,7 @@ void GameObject::RequestDelete(){
 }
 
 void GameObject::AddComponent(std::unique_ptr<Component>&& cpt){
+    if (isDead) return;
     components.push_back(std::move(cpt));
 }
 

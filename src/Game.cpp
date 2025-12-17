@@ -19,7 +19,8 @@ Game& Game::GetInstance(){
  }
 
 Game::Game(string title, int width, int height) : 
-window(nullptr), renderer(nullptr), state(nullptr) {
+    window(nullptr), renderer(nullptr), state(nullptr),  
+    frameStart(0), dt(0.0f) {
     if(instance != nullptr){
         throw string("Já tem uma instância de Game");
     } else {
@@ -96,14 +97,16 @@ SDL_Renderer* Game::GetRenderer(){
 void Game::Run(){
     // int frameCount = 0; //Apenas para debug
 
+
     if (state == nullptr) {
         throw std::runtime_error("Erro FATAL: O objeto State (state) é nulo!");
     }
 
     while(!state->QuitRequested()){
+        CalculateDeltaTime();
         InputManager::GetInstance().Update();
 
-        state->Update(0);
+        state->Update(dt);
 
         // frameCount++; //Apenas para debug
         // fprintf(stderr, "Frame: %d", frameCount); //Apenas para debug
@@ -118,4 +121,14 @@ void Game::Run(){
     Resources::ClearImages();
     Resources::ClearMusics();
     Resources::ClearSounds();
+}
+
+void Game::CalculateDeltaTime() {
+    int currentFrame = SDL_GetTicks();
+    dt = (currentFrame - frameStart) / 1000.0f;
+    frameStart = currentFrame;
+}
+
+float Game::GetDeltaTime() {
+    return dt;
 }
