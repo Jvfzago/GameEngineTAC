@@ -2,6 +2,7 @@
 #include "InputManager.h"
 #include "Character.h"
 #include "Camera.h"
+#include "SpriteRenderer.h"
 
 PlayerController::PlayerController(GameObject& associated) : Component(associated) {}
 
@@ -35,6 +36,15 @@ void PlayerController::Update(float dt) {
         
         Character::Command moveCmd(Character::CommandType::MOVE, targetPos.GetX(), targetPos.GetY());
         Character::player->Issue(moveCmd);
+        
+        auto spriteRenderer = Character::player->GetAssociated()->GetComponent<SpriteRenderer>();
+        SDL_RendererFlip tempFlip = SDL_FLIP_NONE;
+        if (direction.GetX() < 0) {
+            tempFlip = SDL_FLIP_HORIZONTAL;
+        }
+        if (spriteRenderer) {
+            spriteRenderer->SetFlip(tempFlip);
+        }
     }
 
     if (input.MousePress(SDL_BUTTON_LEFT)) {

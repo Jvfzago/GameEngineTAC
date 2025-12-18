@@ -3,10 +3,11 @@
 #include "Resources.h"
 #include "Camera.h"
 
-Sprite::Sprite() : texture(nullptr), 
+Sprite::Sprite() : texture(nullptr), width(0), height(0),
 clipRect({}),
-width(0), height(0),
-frameCountW(1), frameCountH(1), cameraFollower(false), flip(SDL_FLIP_NONE), scale(1.0f, 1.0f) {
+frameCountW(1), frameCountH(1),  
+flip(SDL_FLIP_NONE), scale(1.0f, 1.0f),
+cameraFollower(false) {
     
 }
 
@@ -49,10 +50,10 @@ void Sprite::Render(int x, int y, int w, int h, double angle){
         dst.x = x;
         dst.y = y;
     }
+    dst.w = w * scale.GetX();
+    dst.h = h * scale.GetY();
 
-    dst.w = w;
-    dst.h = h;
-    SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, &clipRect, &dst);
+    SDL_RenderCopyEx(Game::GetInstance().GetRenderer(), texture, &clipRect, &dst, angle, nullptr, flip);
 }
 
 int Sprite::GetWidth(){

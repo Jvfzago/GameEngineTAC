@@ -249,7 +249,9 @@ dep/PlayerController.d bin/PlayerController.o: src/PlayerController.cpp \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h \
- include/Camera.h
+ include/Camera.h include/SpriteRenderer.h include/Sprite.h \
+ include/SDL_include.h C:/SDL2/include/SDL2/SDL_image.h \
+ C:/SDL2/include/SDL2/SDL.h
 include/PlayerController.h:
 include/Component.h:
 include/GameObject.h:
@@ -540,3 +542,8 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h:
 include/Camera.h:
+include/SpriteRenderer.h:
+include/Sprite.h:
+include/SDL_include.h:
+C:/SDL2/include/SDL2/SDL_image.h:
+C:/SDL2/include/SDL2/SDL.h:

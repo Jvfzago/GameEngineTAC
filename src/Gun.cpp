@@ -32,10 +32,8 @@ void Gun::Start() {}
 
 void Gun::Update(float dt) {
     auto owner = character.lock();
-    if (!owner) {
-        associated.RequestDelete();
-        return;
-    }
+
+
 
     Vec2 ownerCenter = owner->box.GetCenter();
     associated.box.SetCenter(ownerCenter);
@@ -76,6 +74,27 @@ void Gun::Update(float dt) {
             }
             break;
     }
+
+    //Calcula o ângulo da arma baseado na posição do mouse
+    InputManager& input = InputManager::GetInstance();
+    angle = std::atan2(input.GetMouseY() + Camera::pos.GetY() - owner->box.GetCenter().GetY(),
+                       input.GetMouseX() + Camera::pos.GetX() - owner->box.GetCenter().GetX());
+    associated.angleDeg = angle * (180.0 / M_PI);
+
+    //Faz arma dar flip dependendo do ângulo
+    SpriteRenderer* spriteRenderer = (SpriteRenderer*)associated.GetComponent<SpriteRenderer>();
+    if (spriteRenderer){
+        if(associated.angleDeg > 90.0 || associated.angleDeg < -90.0) {
+            spriteRenderer->SetFlip(SDL_FLIP_VERTICAL);
+        } else {
+            spriteRenderer->SetFlip(SDL_FLIP_NONE);
+        }
+    }
+
+    if (!owner) {
+        associated.RequestDelete();
+        return;
+    }
 }
 
 void Gun::Render() {}
@@ -85,9 +104,9 @@ void Gun::Shoot(Vec2 target) {
         Vec2 gunCenter = associated.box.GetCenter();
         Vec2 direction = target.Sub(gunCenter).Normalize();
         angle = std::atan2(direction.GetY(), direction.GetX());
-        
+
         GameObject* bulletGO = new GameObject();
-        Bullet* bullet = new Bullet(*bulletGO, angle, 500.0f, 10, 100.0f);
+        Bullet* bullet = new Bullet(*bulletGO, angle, 500.0f, 10, 800.0f);
         bulletGO->AddComponent(std::unique_ptr<Bullet>(bullet));
         bulletGO->box.SetCenter(gunCenter);
         std::weak_ptr<GameObject> bulletPtr = Game::GetInstance().GetState().AddObject(bulletGO);

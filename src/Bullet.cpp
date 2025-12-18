@@ -2,16 +2,20 @@
 #include "SpriteRenderer.h"
 
 Bullet::Bullet(GameObject& associated, float angle, float speed, int damage, float maxDistance)
-    : Component(associated), speed(0,0), damage(0), distanceLeft(0)
+    : Component(associated), speed(0,0), distanceLeft(0), damage(0)
 {
     this->damage = damage;
     this->distanceLeft = maxDistance;
 
     this->speed = Vec2(cos(angle) * speed, sin(angle) * speed);
 
-    SpriteRenderer* sprite = new SpriteRenderer(associated, "Recursos/img/Bullet.png");
-    associated.AddComponent(std::unique_ptr<SpriteRenderer>(sprite));
-    //associated.angleDeg = angle * (180 / M_PI);
+    SpriteRenderer* spriteRenderer = new SpriteRenderer(associated, "Recursos/img/Bullet.png");
+    associated.AddComponent(std::unique_ptr<SpriteRenderer>(spriteRenderer));
+
+    //Alteria rotação e muda escala do tiro
+    associated.angleDeg = angle * (180 / M_PI);
+    associated.angleDeg += 90.0;
+    spriteRenderer->SetScale(1.3f, 1.3f);
 }
 
 void Bullet::Start() {}
