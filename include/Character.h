@@ -31,6 +31,8 @@ class Character : public Component {
 
         void Issue(Command task);
 
+        GameObject* GetAssociated();
+
         static Character* player;
 
     private:

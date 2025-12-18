@@ -12,7 +12,7 @@ Character::Character(GameObject& associated, std::string sprite)
     : Component(associated),
       gun(),
       speed(0, 0),
-      linearSpeed(0),
+      linearSpeed(100.0f),
       hp(100),
       deathTimer()
 {
@@ -37,6 +37,7 @@ Character::~Character() {
 
 void Character::Start() {
     GameObject* gunGO = new GameObject();
+    gunGO->box.SetCenter(associated.box.GetCenter());
     std::weak_ptr<GameObject> weak_associated = Game::GetInstance().GetState().GetObjectPtr(&associated);
     Gun* gunPtr = new Gun(*gunGO, weak_associated);
     gunGO->AddComponent(std::unique_ptr<Gun>(gunPtr));
@@ -46,18 +47,20 @@ void Character::Start() {
 
 void Character::Update(float dt) {
     deathTimer.Update(dt);
-    Animator* animator = associated.GetComponent<Animator>();
+    Animator* animator = (Animator*)associated.GetComponent<Animator>();
     bool isMoving = false;
 
     while (!taskQueue.empty()) {
         Command& currentTask = taskQueue.front();
 
         if (currentTask.type == CommandType::MOVE) {
-            Vec2 destination = currentTask.pos;
             Vec2 currentPos = associated.box.GetCenter();
+            Vec2 destination = currentTask.pos;
             Vec2 diff = destination.Sub(currentPos);
+            float distance = diff.Magnitude();
 
-            if (diff.Magnitude() < 5.0f) {
+            if (distance <= linearSpeed * dt || distance < 5.0f) {
+                associated.box.SetCenter(destination);
                 speed = {0, 0};
                 taskQueue.pop();
             } else {
@@ -75,15 +78,14 @@ void Character::Update(float dt) {
             taskQueue.pop();
         }
     }
-    
 
     if (hp > 0) {
         associated.box.SetX(associated.box.GetX() + speed.GetX() * dt);
         associated.box.SetY(associated.box.GetY() + speed.GetY() * dt);
 
         if (animator) {
-            if (isMoving) animator->SetAnimation("walking");
-            else animator->SetAnimation("idle");
+            if (isMoving) {animator->SetAnimation("walking");}
+            else {animator->SetAnimation("idle");}
         }
     } else {
         speed = {0, 0};
@@ -99,4 +101,8 @@ void Character::Render() {}
 
 void Character::Issue(Command task) {
     taskQueue.push(task);
+}
+
+GameObject* Character::GetAssociated() {
+    return &associated;
 }

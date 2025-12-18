@@ -21,7 +21,7 @@ Gun::Gun(GameObject& associated, std::weak_ptr<GameObject> character)
     associated.AddComponent(std::unique_ptr<Animator>(animator));
 
     animator->AddAnimation("idle", Animation(0, 0, 0.0f));
-    animator->AddAnimation("reloading", Animation(1, 5, 0.5f));
+    animator->AddAnimation("reloading", Animation(1, 5, 0.1f));
 
     animator->SetAnimation("idle");
 }

@@ -7,6 +7,7 @@
 #include "InputManager.h"
 #include "Camera.h"
 #include "Character.h"
+#include "PlayerController.h"
 
 #include <algorithm>
 #include <stdexcept>
@@ -58,6 +59,9 @@ State::State() : quitRequested(false), started(false) {
     Character::player = characterPtr;
 
     Camera::Follow(character);
+
+    PlayerController* pc = new PlayerController(*character);
+    character->AddComponent(std::unique_ptr<PlayerController>(pc));
 
 
     //-----------------------------------------------------------------------
