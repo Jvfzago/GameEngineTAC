@@ -17,9 +17,12 @@ class SpriteRenderer : public Component {
     void Start() override;
     void Update(float dt) override;
     void Render() override;
-    void SetFrame(int frame); // frame = 0..(frameCountW*frameCountH - 1)
+    void SetFrame(int frame);
+    void SetFrame(int frame, SDL_RendererFlip flip);
 
     void setCameraFollower(bool cameraFollower);
+
+    void SetScale(float scaleX, float scaleY);
 };
 
 #endif  // SPRITERENDERER_H

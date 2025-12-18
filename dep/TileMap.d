@@ -210,8 +210,7 @@ dep/TileMap.d bin/TileMap.o: src/TileMap.cpp include/TileMap.h \
  C:/SDL2/include/SDL2/SDL_timer.h C:/SDL2/include/SDL2/SDL_version.h \
  C:/SDL2/include/SDL2/SDL_locale.h C:/SDL2/include/SDL2/SDL_misc.h \
  C:/SDL2/include/SDL2/SDL_image.h C:/SDL2/include/SDL2/SDL.h \
- include/GameObject.h include/Component.h include/Rect.h include/Vec2.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
+ include/Vec2.h C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
  C:/TDM-GCC-32/include/math.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ostream \
@@ -236,6 +235,7 @@ dep/TileMap.d bin/TileMap.o: src/TileMap.cpp include/TileMap.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ostream.tcc \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/istream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/istream.tcc \
+ include/GameObject.h include/Component.h include/Rect.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/fstream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/codecvt.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/basic_file.h \
@@ -491,9 +491,6 @@ C:/SDL2/include/SDL2/SDL_locale.h:
 C:/SDL2/include/SDL2/SDL_misc.h:
 C:/SDL2/include/SDL2/SDL_image.h:
 C:/SDL2/include/SDL2/SDL.h:
-include/GameObject.h:
-include/Component.h:
-include/Rect.h:
 include/Vec2.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath:
 C:/TDM-GCC-32/include/math.h:
@@ -520,6 +517,9 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/basic_ios.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ostream.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/istream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/istream.tcc:
+include/GameObject.h:
+include/Component.h:
+include/Rect.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/fstream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/codecvt.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/basic_file.h:

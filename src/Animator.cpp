@@ -21,8 +21,8 @@ void Animator::Update(float dt) {
 
             if (currentFrame > frameEnd) {currentFrame = frameStart;}
 
-            auto sprite = associated.GetComponent<SpriteRenderer>();
-            if (sprite) {sprite->SetFrame(currentFrame);}
+            auto spriteRenderer = associated.GetComponent<SpriteRenderer>();
+            if (spriteRenderer) {spriteRenderer->SetFrame(currentFrame);}
         }
     }
 }
@@ -43,8 +43,8 @@ void Animator::SetAnimation(std::string name) {
             currentFrame = frameStart;
             timeElapsed = 0.0f;
     
-            auto sprite = associated.GetComponent<SpriteRenderer>();
-            if (sprite) {sprite->SetFrame(currentFrame);}
+            auto spriteRenderer = associated.GetComponent<SpriteRenderer>();
+            if (spriteRenderer) {spriteRenderer->SetFrame(currentFrame);}
         }
     }
 }

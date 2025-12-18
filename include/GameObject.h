@@ -37,6 +37,7 @@ class GameObject {
         }
 
         Rect box;
+        double angleDeg;
 
 };
 

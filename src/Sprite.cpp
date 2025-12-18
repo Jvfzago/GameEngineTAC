@@ -6,7 +6,7 @@
 Sprite::Sprite() : texture(nullptr), 
 clipRect({}),
 width(0), height(0),
-frameCountW(1), frameCountH(1), cameraFollower(false) {
+frameCountW(1), frameCountH(1), cameraFollower(false), flip(SDL_FLIP_NONE), scale(1.0f, 1.0f) {
     
 }
 
@@ -37,7 +37,7 @@ void Sprite::SetClip(int x, int y, int w,int h){
     clipRect.h = h;
 }
 
-void Sprite::Render(int x, int y, int w, int h){
+void Sprite::Render(int x, int y, int w, int h, double angle){
     if(texture == nullptr){
         throw string("[Sprite::Render] Não tem textura pra renderizar.");
     }
@@ -56,11 +56,11 @@ void Sprite::Render(int x, int y, int w, int h){
 }
 
 int Sprite::GetWidth(){
-    return width / frameCountW;
+    return (width / frameCountW) * scale.GetX();
 }
 
 int Sprite::GetHeight(){
-    return height / frameCountH;
+    return (height / frameCountH) * scale.GetY();
 }
 
 bool Sprite::IsOpen(){
@@ -81,4 +81,25 @@ void Sprite::SetFrame(int frame){
 void Sprite::SetFrameCount(int frameCountW, int frameCountH){
     this->frameCountW = frameCountW;
     this->frameCountH = frameCountH;
+}
+
+void Sprite::SetScale(float scaleX, float scaleY){
+    //Se o valor passado apara qualquer escala for 0, mantém o valor atual
+    if (scaleX < 0 || scaleY < 0) {
+        throw string("[Sprite::SetScale] Scale não pode ser negativo.");
+    }
+    if (scaleX != 0) {
+        scale.SetX(scaleX);
+    }
+    if (scaleY != 0) {
+        scale.SetY(scaleY);
+    }
+}
+
+Vec2 Sprite::GetScale(){
+    return scale;
+}
+
+void Sprite::SetFlip(SDL_RendererFlip flip){
+    this->flip = flip;
 }

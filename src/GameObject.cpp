@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-GameObject::GameObject() : isDead(false), components(), started(false) {
+GameObject::GameObject() : isDead(false), components(), started(false), angleDeg(0.0) {
 }
 
 GameObject::~GameObject() {

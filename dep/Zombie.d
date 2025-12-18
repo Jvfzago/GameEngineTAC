@@ -186,8 +186,8 @@ dep/Zombie.d bin/Zombie.o: src/Zombie.cpp include/Zombie.h \
  C:/SDL2/include/SDL2/SDL_shape.h C:/SDL2/include/SDL2/SDL_system.h \
  C:/SDL2/include/SDL2/SDL_timer.h C:/SDL2/include/SDL2/SDL_locale.h \
  C:/SDL2/include/SDL2/SDL_misc.h C:/SDL2/include/SDL2/SDL_image.h \
- C:/SDL2/include/SDL2/SDL.h include/GameObject.h include/Rect.h \
- include/Vec2.h C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
+ C:/SDL2/include/SDL2/SDL.h include/Vec2.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
  C:/TDM-GCC-32/include/math.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ostream \
@@ -212,6 +212,7 @@ dep/Zombie.d bin/Zombie.o: src/Zombie.cpp include/Zombie.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ostream.tcc \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/istream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/istream.tcc \
+ include/GameObject.h include/Rect.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/vector \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_uninitialized.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_vector.h \
@@ -474,8 +475,6 @@ C:/SDL2/include/SDL2/SDL_locale.h:
 C:/SDL2/include/SDL2/SDL_misc.h:
 C:/SDL2/include/SDL2/SDL_image.h:
 C:/SDL2/include/SDL2/SDL.h:
-include/GameObject.h:
-include/Rect.h:
 include/Vec2.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath:
 C:/TDM-GCC-32/include/math.h:
@@ -502,6 +501,8 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/basic_ios.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ostream.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/istream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/istream.tcc:
+include/GameObject.h:
+include/Rect.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/vector:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_uninitialized.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_vector.h:

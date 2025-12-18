@@ -198,8 +198,7 @@ dep/Resources.d bin/Resources.o: src/Resources.cpp include/Resources.h \
  C:/SDL2/include/SDL2/SDL_locale.h C:/SDL2/include/SDL2/SDL_misc.h \
  C:/SDL2/include/SDL2/SDL_image.h C:/SDL2/include/SDL2/SDL.h \
  C:/SDL2/include/SDL2/SDL_mixer.h include/Game.h include/State.h \
- include/Sprite.h include/Music.h include/GameObject.h \
- include/Component.h include/Rect.h include/Vec2.h \
+ include/Sprite.h include/Vec2.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
  C:/TDM-GCC-32/include/math.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream \
@@ -225,6 +224,7 @@ dep/Resources.d bin/Resources.o: src/Resources.cpp include/Resources.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ostream.tcc \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/istream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/istream.tcc \
+ include/Music.h include/GameObject.h include/Component.h include/Rect.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/vector \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_uninitialized.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_vector.h \
@@ -483,10 +483,6 @@ C:/SDL2/include/SDL2/SDL_mixer.h:
 include/Game.h:
 include/State.h:
 include/Sprite.h:
-include/Music.h:
-include/GameObject.h:
-include/Component.h:
-include/Rect.h:
 include/Vec2.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath:
 C:/TDM-GCC-32/include/math.h:
@@ -513,6 +509,10 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/basic_ios.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ostream.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/istream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/istream.tcc:
+include/Music.h:
+include/GameObject.h:
+include/Component.h:
+include/Rect.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/vector:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_uninitialized.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_vector.h:

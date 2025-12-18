@@ -14,7 +14,7 @@ Gun::Gun(GameObject& associated, std::weak_ptr<GameObject> character)
       cooldownState(0),
       cdTimer(),
       character(character),
-      angle(0) 
+      angle(0.0) 
 {
     SpriteRenderer* spriteRenderer = new SpriteRenderer(associated, "Recursos/img/Gun.png", 3, 2);
     associated.AddComponent(std::unique_ptr<SpriteRenderer>(spriteRenderer));
@@ -84,10 +84,10 @@ void Gun::Shoot(Vec2 target) {
     if (cooldownState == 0) {
         Vec2 gunCenter = associated.box.GetCenter();
         Vec2 direction = target.Sub(gunCenter).Normalize();
-        angle = atan2(direction.GetY(), direction.GetX());
+        angle = std::atan2(direction.GetY(), direction.GetX());
         
         GameObject* bulletGO = new GameObject();
-        Bullet* bullet = new Bullet(*bulletGO, angle, 500.0f, 10, 1000.0f);
+        Bullet* bullet = new Bullet(*bulletGO, angle, 500.0f, 10, 100.0f);
         bulletGO->AddComponent(std::unique_ptr<Bullet>(bullet));
         bulletGO->box.SetCenter(gunCenter);
         std::weak_ptr<GameObject> bulletPtr = Game::GetInstance().GetState().AddObject(bulletGO);
