@@ -49,11 +49,23 @@ void Character::Update(float dt) {
     deathTimer.Update(dt);
     Animator* animator = (Animator*)associated.GetComponent<Animator>();
     bool isMoving = false;
+    
+    bool moveProcessed = false;
 
-    while (!taskQueue.empty()) {
-        Command& currentTask = taskQueue.front();
+    int commandsToProcess = taskQueue.size();
+    
+    while (commandsToProcess > 0) {
+       Command& currentTask = taskQueue.front();
+        commandsToProcess--;
 
         if (currentTask.type == CommandType::MOVE) {
+
+            if (moveProcessed) {
+                taskQueue.push(currentTask);
+                taskQueue.pop();
+                continue;
+            }
+
             Vec2 currentPos = associated.box.GetCenter();
             Vec2 destination = currentTask.pos;
             Vec2 diff = destination.Sub(currentPos);
@@ -62,21 +74,28 @@ void Character::Update(float dt) {
             if (distance <= linearSpeed * dt || distance < 5.0f) {
                 associated.box.SetCenter(destination);
                 speed = {0, 0};
+                std::cout << "Stopped";
                 taskQueue.pop();
             } else {
                 speed = diff.Normalize().Mul(linearSpeed);
                 isMoving = true;
-                break;
+                moveProcessed = true;
+
+                taskQueue.push(currentTask);
+                taskQueue.pop();
             }
         } 
         else if (currentTask.type == CommandType::SHOOT) {
             auto gunPtr = gun.lock();
+            std::cout << "Shotted";
             if (gunPtr) {
                 Gun* g = (Gun*)gunPtr->GetComponent<Gun>();
                 if (g) g->Shoot(currentTask.pos);
             }
             taskQueue.pop();
         }
+
+        
     }
 
     if (hp > 0) {
@@ -105,4 +124,8 @@ void Character::Issue(Command task) {
 
 GameObject* Character::GetAssociated() {
     return &associated;
+}
+
+void Character::ClearCommands() {
+    while (!taskQueue.empty()) taskQueue.pop();
 }

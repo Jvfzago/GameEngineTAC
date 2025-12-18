@@ -35,6 +35,8 @@ class Character : public Component {
 
         static Character* player;
 
+        void ClearCommands();
+
     private:
         std::weak_ptr<GameObject> gun;
         std::queue<Command> taskQueue;

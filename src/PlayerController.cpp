@@ -30,6 +30,8 @@ void PlayerController::Update(float dt) {
         direction = direction.Normalize();
         Vec2 currentPos = Character::player->GetAssociated()->box.GetCenter();
         Vec2 targetPos = currentPos.Add(direction.Mul(10.0f));
+
+        Character::player->ClearCommands();
         
         Character::Command moveCmd(Character::CommandType::MOVE, targetPos.GetX(), targetPos.GetY());
         Character::player->Issue(moveCmd);
@@ -38,6 +40,7 @@ void PlayerController::Update(float dt) {
     if (input.MousePress(SDL_BUTTON_LEFT)) {
         float mouseWorldX = (float)input.GetMouseX() + Camera::pos.GetX();
         float mouseWorldY = (float)input.GetMouseY() + Camera::pos.GetY();
+        
         Character::Command shootCmd(Character::CommandType::SHOOT, mouseWorldX, mouseWorldY);
         Character::player->Issue(shootCmd);
     }
