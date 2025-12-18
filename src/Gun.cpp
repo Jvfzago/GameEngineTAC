@@ -3,6 +3,8 @@
 #include "Camera.h"
 #include "SpriteRenderer.h"
 #include "Animator.h"
+#include "Bullet.h"
+#include "Game.h"
 #include <cmath>
 
 Gun::Gun(GameObject& associated, std::weak_ptr<GameObject> character) 
@@ -26,9 +28,7 @@ Gun::Gun(GameObject& associated, std::weak_ptr<GameObject> character)
     animator->SetAnimation("idle");
 }
 
-void Gun::Start() {
-    // Initialization if needed
-}
+void Gun::Start() {}
 
 void Gun::Update(float dt) {
     auto owner = character.lock();
@@ -84,6 +84,14 @@ void Gun::Shoot(Vec2 target) {
     if (cooldownState == 0) {
         Vec2 gunCenter = associated.box.GetCenter();
         Vec2 direction = target.Sub(gunCenter).Normalize();
+        angle = atan2(direction.GetY(), direction.GetX());
+        
+        GameObject* bulletGO = new GameObject();
+        Bullet* bullet = new Bullet(*bulletGO, angle, 500.0f, 10, 1000.0f);
+        bulletGO->AddComponent(std::unique_ptr<Bullet>(bullet));
+        bulletGO->box.SetCenter(gunCenter);
+        std::weak_ptr<GameObject> bulletPtr = Game::GetInstance().GetState().AddObject(bulletGO);
+
 
         shotSound.Play();
         cooldownState = 1;

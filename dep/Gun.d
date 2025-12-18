@@ -245,7 +245,8 @@ dep/Gun.d bin/Gun.o: src/Gun.cpp include/Gun.h include/Component.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h \
  include/Camera.h include/SpriteRenderer.h include/Sprite.h \
  include/SDL_include.h C:/SDL2/include/SDL2/SDL_image.h \
- C:/SDL2/include/SDL2/SDL.h include/Animator.h include/Animation.h
+ C:/SDL2/include/SDL2/SDL.h include/Animator.h include/Animation.h \
+ include/Bullet.h include/Game.h include/State.h include/Music.h
 include/Gun.h:
 include/Component.h:
 include/GameObject.h:
@@ -538,3 +539,7 @@ C:/SDL2/include/SDL2/SDL_image.h:
 C:/SDL2/include/SDL2/SDL.h:
 include/Animator.h:
 include/Animation.h:
+include/Bullet.h:
+include/Game.h:
+include/State.h:
+include/Music.h:
