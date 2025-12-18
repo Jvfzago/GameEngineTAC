@@ -14,6 +14,8 @@ class Animator : public Component {
         float frameTime;
         int currentFrame;
         float timeElapsed;
+
+        std::string currentAnimation;
     public:
         Animator(GameObject& associated);
 

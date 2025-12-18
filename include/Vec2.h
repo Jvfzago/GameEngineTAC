@@ -32,6 +32,8 @@ class Vec2{
         Vec2 Rotate(float angle) const; // Radians, rotates clockwise, causes y goes down
         std::string ToString() const;
 
+        float Magnitude() const;
+
 };
 
 #endif // VEC2_H

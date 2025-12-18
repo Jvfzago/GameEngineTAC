@@ -5,8 +5,8 @@ Vec2 Camera::pos = {0, 0};
 Vec2 Camera::speed = {0, 0};
 GameObject* Camera::focus = nullptr;
 
-void Camera::Follow(GameObject& newFocus) {
-    focus = &newFocus;
+void Camera::Follow(GameObject* newFocus) {
+    focus = newFocus;
 }
 
 void Camera::Unfollow() {

@@ -83,3 +83,6 @@ std::string Vec2::ToString() const {
     return "Vec2(" + std::to_string(x) + ", " + std::to_string(y) + ")";
 }
 
+float Vec2::Magnitude() const {
+    return std::sqrt(x * x + y * y);
+}

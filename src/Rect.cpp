@@ -1,4 +1,5 @@
 #include "Rect.h"
+#include "Vec2.h"
 
 Rect::Rect() : x(0.0f), y(0.0f), w(0.0f), h(0.0f) {
 
@@ -37,5 +38,12 @@ void Rect::SetH(float h) {
     this->h = h;
 }
 
+Vec2 Rect::GetCenter() const {
+    return Vec2(x + w / 2.0f, y + h / 2.0f);
+}
 
+void Rect::SetCenter(const Vec2& center) {
+    x = center.GetX() - w / 2.0f;
+    y = center.GetY() - h / 2.0f;
+}
 

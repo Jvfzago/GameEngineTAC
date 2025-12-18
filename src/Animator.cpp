@@ -1,8 +1,6 @@
 #include "Animator.h"
 #include "SpriteRenderer.h"
 
-
-
 Animator::Animator(GameObject& associated) 
     : Component(associated), 
     animations(),
@@ -14,9 +12,9 @@ void Animator::Start() {
 
 void Animator::Update(float dt) {
     if (animations.empty()) return;
-    if (frameTime <= 0) {}
+    if (frameTime <= 0.0f) {}
     else {
-        timeElapsed += 1; //Talvez adicione dt depois
+        timeElapsed += dt; //Talvez adicione dt depois
         if (timeElapsed >= frameTime) {
             currentFrame++;
             timeElapsed -= frameTime;
@@ -33,17 +31,21 @@ void Animator::Render() {
 }
 
 void Animator::SetAnimation(std::string name) {
-    auto it = animations.find(name);
-    if (it != animations.end()) {
-        Animation& anim = it->second;
-        frameStart = anim.GetFrameStart();
-        frameEnd = anim.GetFrameEnd();
-        frameTime = anim.GetFrameTime();
-        currentFrame = frameStart;
-        timeElapsed = 0.0f;
-
-        auto sprite = associated.GetComponent<SpriteRenderer>();
-        if (sprite) {sprite->SetFrame(currentFrame);}
+    if (currentAnimation != name) {
+        currentAnimation = name;
+        
+        auto it = animations.find(name);
+        if (it != animations.end()) {
+            Animation& anim = it->second;
+            frameStart = anim.GetFrameStart();
+            frameEnd = anim.GetFrameEnd();
+            frameTime = anim.GetFrameTime();
+            currentFrame = frameStart;
+            timeElapsed = 0.0f;
+    
+            auto sprite = associated.GetComponent<SpriteRenderer>();
+            if (sprite) {sprite->SetFrame(currentFrame);}
+        }
     }
 }
 

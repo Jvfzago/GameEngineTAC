@@ -6,6 +6,8 @@
 #include "Zombie.h"
 #include "InputManager.h"
 #include "Camera.h"
+#include "Character.h"
+
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
@@ -47,6 +49,15 @@ State::State() : quitRequested(false), started(false) {
     std::cout << "[State::State] TileMap loaded successfully." << std::endl;
 
     //-----------------------------------------------------------------------
+    GameObject* character = new GameObject();
+    character->box.SetX(1280);
+    character->box.SetY(1280);
+    Character* characterPtr = new Character(*character, "Recursos/img/Player.png");
+    character->AddComponent(std::unique_ptr<Character>(characterPtr));
+    std::weak_ptr<GameObject> weak_character = AddObject(character);
+    Character::player = characterPtr;
+
+    Camera::Follow(character);
 
 
     //-----------------------------------------------------------------------

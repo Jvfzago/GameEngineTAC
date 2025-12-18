@@ -20,7 +20,7 @@ Zombie::Zombie(GameObject& associated) :
     
     Animator* animator = new Animator(associated);
     associated.AddComponent(std::unique_ptr<Animator>(animator));
-    animator->AddAnimation("walking", Animation(0, 3, 0.5f));
+    animator->AddAnimation("walking", Animation(0, 3, 0.25f));
     animator->AddAnimation("dead", Animation(5, 5, 0.0f));
     animator->AddAnimation("hit", Animation(4, 4, 0.0f));
     animator->SetAnimation("walking");

@@ -1,6 +1,8 @@
 #ifndef RECT_H
 #define RECT_H
 
+#include "Vec2.h"
+
 class Rect {
     private:
         float x;
@@ -20,6 +22,9 @@ class Rect {
         void SetY(float y);
         void SetW(float w);
         void SetH(float h);
+
+        Vec2 GetCenter() const;
+        void SetCenter(const Vec2& center);
 
 };
 
