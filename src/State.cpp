@@ -28,16 +28,14 @@ State::State() : quitRequested(false), started(false) {
         music.Open("Recursos/audio/BGM.wav");
         music.Play(-1);
     } catch (const std::runtime_error& e) {
-        printf("[State::State] Erro ao tocar musica de fundo: %s\n", e.what());
+        printf("[State::State] Erro playing background music: %s\n", e.what());
     }
-    
     std::cout << "[State::State] Music played successfully." << std::endl;
     
     GameObject* bg = new GameObject();
     bg->AddComponent(std::unique_ptr<SpriteRenderer>(new SpriteRenderer(*bg, "Recursos/img/Background.png")));
     bg->GetComponent<SpriteRenderer>()->setCameraFollower(true);
     AddObject(bg);
-
     std::cout << "[State::State] Background loaded successfully." << std::endl;
 
     GameObject* tileMap = new GameObject();
@@ -46,10 +44,10 @@ State::State() : quitRequested(false), started(false) {
     AddObject(tileMap);
     tileMap->box.SetW(0);
     tileMap->box.SetH(0);
-
     std::cout << "[State::State] TileMap loaded successfully." << std::endl;
 
     //-----------------------------------------------------------------------
+
     GameObject* character = new GameObject();
     character->box.SetX(1280);
     character->box.SetY(1280);
@@ -62,7 +60,6 @@ State::State() : quitRequested(false), started(false) {
 
     PlayerController* pc = new PlayerController(*character);
     character->AddComponent(std::unique_ptr<PlayerController>(pc));
-
 
     //-----------------------------------------------------------------------
 
@@ -106,6 +103,7 @@ void State::Update(float dt){
     Camera::Update(dt);
 
     //-----------------------------------------------------
+
     if(InputManager::GetInstance().KeyPress(SDLK_SPACE)){
         GameObject* zombie = new GameObject();
         zombie->box.SetX(InputManager::GetInstance().GetMouseX() + Camera::pos.GetX());
@@ -114,11 +112,7 @@ void State::Update(float dt){
         AddObject(zombie);
     }
 
-
-
-
     //-----------------------------------------------------
-
 
     //Remove os GameObjects "mortos"
     objectArray.erase(
